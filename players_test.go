@@ -1,0 +1,27 @@
+package go_fifa_test
+
+import (
+	"testing"
+
+	fifa "github.com/ImDevinC/go-fifa"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestGetPlayer(t *testing.T) {
+	client, err := fifa.NewClient(&fifa.Options{})
+	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
+		t.FailNow()
+	}
+	resp, err := client.GetPlayer(&fifa.GetPlayerOptions{
+		PlayerID: "200704206",
+	})
+	if ok := assert.Nil(t, err, "expected no error with GetTeam, got: %s", err); !ok {
+		t.FailNow()
+	}
+	if ok := assert.NotEmpty(t, resp.Name, "no names available"); !ok {
+		t.FailNow()
+	}
+	if ok := assert.Equal(t, "Edgar HERNÁNDEZ", resp.Name[0].Description, "got unexpected value"); !ok {
+		t.FailNow()
+	}
+}
