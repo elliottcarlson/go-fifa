@@ -21,7 +21,6 @@ const (
 )
 
 type Client struct {
-	// mu   sync.RWMutex
 	opts *Options
 }
 
