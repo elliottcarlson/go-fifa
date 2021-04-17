@@ -13,3 +13,4 @@ The following endpoints are currently supported:
 | `/timelines/{competition}/{season}/{stage}/{match}` | `GetMatchEvents()` |
 | `/live/football/now` | `GetCurrentMatches()` |
 | `/calendar/matches` | `GetTodaysMatches()` |
+| `/teams/{team}` | `GetTeam()` |
