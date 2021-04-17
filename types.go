@@ -131,7 +131,7 @@ type TeamResponse struct {
 	Name          []DefaultDescriptionResponse `json:"TeamName"`
 	Abbreviation  string                       `json:"Abbreviation"`
 	Coaches       []CoachResponse              `json:"Coaches"`
-	Players       []PlayerResponse             `json:"Players"`
+	Players       []MatchPlayerResponse        `json:"Players"`
 	Bookings      []BookingResponse            `json:"Bookings"`
 	Goals         []GoalResponse               `json:"Goals"`
 	Substitutions []SubstitutionResponse       `json:"Substitutions"`
@@ -155,7 +155,7 @@ type BallPossessionResponse struct {
 	OverallAway float32       `json:"OverallAway"`
 }
 
-type PlayerResponse struct {
+type MatchPlayerResponse struct {
 	ID            string                       `json:"IdPlayer"`
 	TeamID        string                       `json:"IdTeam"`
 	ShirtNumber   int                          `json:"ShirtNumber"`
@@ -235,4 +235,27 @@ type CompetitionResponse struct {
 	Type                int                          `json:"CompetitionType"` // TODO: Enum
 	Properties          interface{}                  `json:"Properties"`
 	IsUpdateable        bool                         `json:"IsUpdateable"`
+}
+
+type PlayerResponse struct {
+	ID                       string                       `json:"IdPlayer"`
+	Name                     []DefaultDescriptionResponse `json:"Name"`
+	Alias                    []DefaultDescriptionResponse `json:"Alias"`
+	Birthdate                time.Time                    `json:"Birthdate"`
+	Weight                   float32                      `json:"Weight"`
+	Height                   float32                      `json:"Height"`
+	Birthplace               string                       `json:"BirthPlace"`
+	CountryId                string                       `json:"IdCountry"`
+	InternationalCaps        int                          `json:"InternationalCaps"`
+	InternationalDebut       int                          `json:"InternationalDebut"`
+	TopCompetitionDebut      int                          `json:"TopCompetitionDebut"`
+	PictureURL               string                       `json:"PictureUrl"`
+	ThumbnailURL             string                       `json:"ThumbnailUrl"`
+	TwitterAccount           string                       `json:"TwitterAccount"`
+	PreferredFoot            string                       `json:"PreferredFoot"`
+	MediaContent             []string                     `json:"MediaContent"`
+	LocalizedTwitterAccounts []DefaultDescriptionResponse `json:"LocalizedTwitterAccounts"`
+	Goals                    int                          `json:"Goals"`
+	Properties               interface{}                  `json:"Properties"`
+	IsUpdateable             bool                         `json:"IsUpdateable"`
 }

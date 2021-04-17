@@ -17,6 +17,7 @@ import (
 const (
 	defaultAPIBaseURL = "https://api.fifa.com/api/v1"
 	defaultUserAgent  = "go-fifa"
+	defaultLanguage   = "en-US,en"
 )
 
 type Client struct {
@@ -32,6 +33,7 @@ type Options struct {
 	HTTPClient HTTPClient
 	APIBaseURL string
 	UserAgent  string
+	Language   string
 }
 
 func NewClient(options *Options) (*Client, error) {
@@ -45,6 +47,10 @@ func NewClient(options *Options) (*Client, error) {
 
 	if options.UserAgent == "" {
 		options.UserAgent = defaultUserAgent
+	}
+
+	if options.Language == "" {
+		options.Language = defaultLanguage
 	}
 
 	client := &Client{
@@ -115,6 +121,8 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 }
 
 func (c *Client) doRequest(req *http.Request, resp interface{}) error {
+	c.setRequestHeaders(req)
+	fmt.Println(req.URL.String())
 	response, err := c.opts.HTTPClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("failed to execute API request: %s", err.Error())
@@ -132,4 +140,13 @@ func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 		return fmt.Errorf("failed to decode API response: %s", err.Error())
 	}
 	return nil
+}
+
+func (c *Client) setRequestHeaders(req *http.Request) {
+	if c.opts.UserAgent != "" {
+		req.Header.Add("User-Agent", c.opts.UserAgent)
+	}
+	if c.opts.Language != "" {
+		req.Header.Add("Accept-Language", c.opts.Language)
+	}
 }

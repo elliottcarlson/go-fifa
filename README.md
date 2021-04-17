@@ -15,3 +15,4 @@ The following endpoints are currently supported:
 | `/live/football/now` | `GetCurrentMatches()` |
 | `/calendar/matches` | `GetTodaysMatches()` |
 | `/teams/{team}` | `GetTeam()` |
+| `/players/{player}` | `GetPlayer()` |
