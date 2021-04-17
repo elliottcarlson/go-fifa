@@ -9,23 +9,22 @@ import (
 
 func TestGetCurrentMatches(t *testing.T) {
 	client, err := fifa.NewClient(&fifa.Options{})
-	if !assert.Nil(t, err, "expected no error with NewClient, got: %s", err) {
+	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
 		t.FailNow()
 	}
-	resp, err := client.GetCurrentMatches()
-	if !assert.Nil(t, err, "expected no error with GetCurrentMatches, got: %s", err) {
+	_, err = client.GetCurrentMatches()
+	if ok := assert.Nil(t, err, "expected no error with GetCurrentMatches, got: %s", err); !ok {
 		t.FailNow()
 	}
-	t.Logf("%+v", resp)
 }
 
 func TestGetTodaysMatches(t *testing.T) {
 	client, err := fifa.NewClient(&fifa.Options{})
-	if !assert.Nil(t, err, "expected no error with NewClient, got: %s", err) {
+	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
 		t.FailNow()
 	}
 	_, err = client.GetTodaysMatches()
-	if !assert.Nil(t, err, "expected no error with GetTodaysMatches, got: %s", err) {
+	if ok := assert.Nil(t, err, "expected no error with GetTodaysMatches, got: %s", err); !ok {
 		t.FailNow()
 	}
 }

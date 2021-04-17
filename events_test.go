@@ -9,7 +9,7 @@ import (
 
 func TestGetMatchEvents(t *testing.T) {
 	client, err := fifa.NewClient(&fifa.Options{})
-	if !assert.Nil(t, err, "expected no error with NewClient, got: %s", err) {
+	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
 		t.FailNow()
 	}
 	_, err = client.GetMatchEvents(&fifa.GetMatchEventOptions{
@@ -18,7 +18,7 @@ func TestGetMatchEvents(t *testing.T) {
 		StageID:       "400157262",
 		MatchID:       "400157188",
 	})
-	if !assert.Nil(t, err, "expected no error with GetMatchEvents, got: %s", err) {
+	if ok := assert.Nil(t, err, "expected no error with GetMatchEvents, got: %s", err); !ok {
 		t.FailNow()
 	}
 }
