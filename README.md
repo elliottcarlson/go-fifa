@@ -10,6 +10,7 @@ The following endpoints are currently supported:
 | API Endpoint | Function |
 | ------------ | -------- |
 | `/competitions` | `GetCompetitions()` |
+| `/competitions/{competition}` | `GetCompetition()` |
 | `/timelines/{competition}/{season}/{stage}/{match}` | `GetMatchEvents()` |
 | `/live/football/now` | `GetCurrentMatches()` |
 | `/calendar/matches` | `GetTodaysMatches()` |
