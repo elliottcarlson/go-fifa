@@ -2,6 +2,13 @@ package go_fifa
 
 import "time"
 
+type Gender int
+
+const (
+	MALE   Gender = 1
+	FEMALE Gender = 2
+)
+
 type PeriodEnum int
 
 const (
@@ -136,7 +143,7 @@ type TeamResponse struct {
 	Goals         []GoalResponse               `json:"Goals"`
 	Substitutions []SubstitutionResponse       `json:"Substitutions"`
 	FootballType  int                          `json:"FootballType"`
-	Gender        int                          `json:"Gender"`
+	Gender        Gender                       `json:"Gender"`
 	AssociationID string                       `json:"IdAssociation"`
 }
 
@@ -180,20 +187,20 @@ type CoachResponse struct {
 }
 
 type BookingResponse struct {
-	Card        int    `json:"Card"`
-	Period      int    `json:"Period"`
-	EventID     string `json:"IdEvent"`
-	EventNumber string `json:"EventNumber"`
-	PlayerID    string `json:"IdPlayer"`
-	CoachID     string `json:"IdCoach"`
-	TeamID      string `json:"IdTeam"`
-	Minute      string `json:"Minute"`
-	Reason      string `json:"Reason"`
+	Card        int        `json:"Card"`
+	Period      PeriodEnum `json:"Period"`
+	EventID     string     `json:"IdEvent"`
+	EventNumber string     `json:"EventNumber"`
+	PlayerID    string     `json:"IdPlayer"`
+	CoachID     string     `json:"IdCoach"`
+	TeamID      string     `json:"IdTeam"`
+	Minute      string     `json:"Minute"`
+	Reason      string     `json:"Reason"`
 }
 
 type SubstitutionResponse struct {
 	EventID       string                       `json:"IdEvent"`
-	Period        int                          `json:"Period"`
+	Period        PeriodEnum                   `json:"Period"`
 	Reason        int                          `json:"Reason"`            // TODO: Enum
 	Position      int                          `json:"SubstituePosition"` // TODO: Enum
 	PlayerOffID   string                       `json:"IdPlayerOff"`
@@ -214,13 +221,13 @@ type OfficialResponse struct {
 }
 
 type GoalResponse struct {
-	ID             string `json:"IdGoal"`
-	TeamID         string `json:"IdTeam"`
-	Type           int    `json:"Type"` // TODO: Enum
-	PlayerID       string `json:"IdPlayer"`
-	Minute         string `json:"Minute"`
-	AssistPlayerID string `json:"IdAssistPlayer"`
-	Period         int    `json:"Period"`
+	ID             string     `json:"IdGoal"`
+	TeamID         string     `json:"IdTeam"`
+	Type           int        `json:"Type"` // TODO: Enum
+	PlayerID       string     `json:"IdPlayer"`
+	Minute         string     `json:"Minute"`
+	AssistPlayerID string     `json:"IdAssistPlayer"`
+	Period         PeriodEnum `json:"Period"`
 }
 
 type CompetitionResponse struct {
@@ -229,7 +236,7 @@ type CompetitionResponse struct {
 	ConfederationID     []string                     `json:"IdConfederation"`
 	MemberAssociationID []string                     `json:"IdMemberAssociation"`
 	OwnerID             string                       `json:"IdOwner"`
-	Gender              int                          `json:"Gender"`          // TODO: Enum
+	Gender              Gender                       `json:"Gender"`
 	FootballType        int                          `json:"FootballType"`    // TODO: Enum
 	TeamType            int                          `json:"TeamType"`        // TODO: Enum
 	Type                int                          `json:"CompetitionType"` // TODO: Enum

@@ -122,7 +122,6 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 
 func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 	c.setRequestHeaders(req)
-	fmt.Println(req.URL.String())
 	response, err := c.opts.HTTPClient.Do(req)
 	if err != nil {
 		return fmt.Errorf("failed to execute API request: %s", err.Error())
