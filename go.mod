@@ -1,4 +1,4 @@
-module go-fifa
+module github.com/imdevinc/go-fifa
 
 go 1.16
 
