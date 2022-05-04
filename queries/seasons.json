@@ -1,0 +1,30 @@
+{
+    "IdSeason": "400198457",
+    "Name": [
+        {
+            "Locale": "en-GB",
+            "Description": "BKT Superliga 2021/2022"
+        }
+    ],
+    "ShortName": [],
+    "Abbreviation": "KOS  2021",
+    "IdMemberAssociation": [
+        "KOS"
+    ],
+    "IdConfederation": [
+        "UEFA"
+    ],
+    "IdCompetition": "2000001049",
+    "StartDate": "2021-08-21T00:00:00Z",
+    "EndDate": "2022-06-30T00:00:00Z",
+    "PictureUrl": null,
+    "MascotPictureUrl": "https://api.fifa.com/api/v1/picture/tournaments-mascot-{format}-{size}",
+    "MatchBallPictureUrl": "https://api.fifa.com/api/v1/picture/tournaments-matchball-{format}-{size}",
+    "HostTeams": [],
+    "SportType": 0,
+    "Properties": {
+        "IdInfostrada": "25673",
+        "Providers": "GGG"
+    },
+    "IsUpdateable": null
+}
