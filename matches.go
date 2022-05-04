@@ -16,7 +16,7 @@ type GetTodaysMatchesOptions struct {
 	To   time.Time `query:"to"`
 }
 
-func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
+func (c *client) GetCurrentMatches() ([]MatchResponse, error) {
 	var respData CurrentMatchesResponse
 	_, err := c.get("/live/football/now", &respData, nil)
 	if err != nil {
@@ -25,7 +25,7 @@ func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
 	return respData.Results, nil
 }
 
-func (c *Client) GetTodaysMatches() ([]MatchResponse, error) {
+func (c *client) GetTodaysMatches() ([]MatchResponse, error) {
 	options := &GetTodaysMatchesOptions{
 		From: time.Now(),
 		To:   time.Now().Add(time.Hour * 24),

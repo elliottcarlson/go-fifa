@@ -55,7 +55,7 @@ type EventResponse struct {
 	EventDescription    []DefaultDescriptionResponse `json:"EventDescription"`
 }
 
-func (c *Client) GetMatchEvents(options *GetMatchEventOptions) (*GetMatchEventsResponse, error) {
+func (c *client) GetMatchEvents(options *GetMatchEventOptions) (*GetMatchEventsResponse, error) {
 	if options.CompetitionID == "" {
 		return nil, errors.New("competitionID is required but not provided")
 	}

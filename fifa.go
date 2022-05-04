@@ -20,8 +20,11 @@ const (
 	defaultLanguage   = "en-US,en"
 )
 
-type Client struct {
-	opts *Options
+type client struct {
+	Client     HTTPClient
+	ApiBaseURL string
+	UserAgent  string
+	Language   string
 }
 
 type HTTPClient interface {
@@ -35,7 +38,10 @@ type Options struct {
 	Language   string
 }
 
-func NewClient(options *Options) (*Client, error) {
+func NewClient(options *Options) (*client, error) {
+	if options == nil {
+		options = &Options{}
+	}
 	if options.HTTPClient == nil {
 		options.HTTPClient = http.DefaultClient
 	}
@@ -52,14 +58,17 @@ func NewClient(options *Options) (*Client, error) {
 		options.Language = defaultLanguage
 	}
 
-	client := &Client{
-		opts: options,
+	client := &client{
+		Client:     options.HTTPClient,
+		ApiBaseURL: options.APIBaseURL,
+		UserAgent:  options.UserAgent,
+		Language:   options.Language,
 	}
 
 	return client, nil
 }
 
-func (c *Client) get(path string, respData interface{}, reqData interface{}) (interface{}, error) {
+func (c *client) get(path string, respData interface{}, reqData interface{}) (interface{}, error) {
 	return c.sendRequest(http.MethodGet, path, respData, reqData, false)
 }
 
@@ -67,7 +76,7 @@ func (c *Client) get(path string, respData interface{}, reqData interface{}) (in
 // 	return c.sendRequest(http.MethodPost, path, respData, reqData, hasJSONBody)
 // }
 
-func (c *Client) sendRequest(method string, path string, respData interface{}, reqData interface{}, hasJSONBody bool) (interface{}, error) {
+func (c *client) sendRequest(method string, path string, respData interface{}, reqData interface{}, hasJSONBody bool) (interface{}, error) {
 	req, err := c.newRequest(method, path, reqData, hasJSONBody)
 	if err != nil {
 		return nil, err
@@ -81,15 +90,15 @@ func (c *Client) sendRequest(method string, path string, respData interface{}, r
 	return respData, nil
 }
 
-func (c *Client) newRequest(method string, path string, data interface{}, hasJSONBody bool) (*http.Request, error) {
-	url := c.opts.APIBaseURL + path
+func (c *client) newRequest(method string, path string, data interface{}, hasJSONBody bool) (*http.Request, error) {
+	url := c.ApiBaseURL + path
 	if hasJSONBody {
 		return c.newJSONRequest(url, method, data)
 	}
 	return c.newStandardRequest(url, method, data)
 }
 
-func (c *Client) newJSONRequest(url string, method string, data interface{}) (*http.Request, error) {
+func (c *client) newJSONRequest(url string, method string, data interface{}) (*http.Request, error) {
 	b, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -103,7 +112,7 @@ func (c *Client) newJSONRequest(url string, method string, data interface{}) (*h
 	return req, nil
 }
 
-func (c *Client) newStandardRequest(url string, method string, data interface{}) (*http.Request, error) {
+func (c *client) newStandardRequest(url string, method string, data interface{}) (*http.Request, error) {
 	req, err := http.NewRequest(method, url, nil)
 	if err != nil {
 		return nil, err
@@ -119,9 +128,9 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 	return req, nil
 }
 
-func (c *Client) doRequest(req *http.Request, resp interface{}) error {
+func (c *client) doRequest(req *http.Request, resp interface{}) error {
 	c.setRequestHeaders(req)
-	response, err := c.opts.HTTPClient.Do(req)
+	response, err := c.Client.Do(req)
 	if err != nil {
 		return fmt.Errorf("failed to execute API request: %s", err.Error())
 	}
@@ -140,11 +149,11 @@ func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 	return nil
 }
 
-func (c *Client) setRequestHeaders(req *http.Request) {
-	if c.opts.UserAgent != "" {
-		req.Header.Add("User-Agent", c.opts.UserAgent)
+func (c *client) setRequestHeaders(req *http.Request) {
+	if c.UserAgent != "" {
+		req.Header.Add("User-Agent", c.UserAgent)
 	}
-	if c.opts.Language != "" {
-		req.Header.Add("Accept-Language", c.opts.Language)
+	if c.Language != "" {
+		req.Header.Add("Accept-Language", c.Language)
 	}
 }

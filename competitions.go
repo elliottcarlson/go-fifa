@@ -14,7 +14,7 @@ type GetCompetitionsOptions struct {
 	CompetitionID string
 }
 
-func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
+func (c *client) GetCompetitions() ([]CompetitionResponse, error) {
 	var respData GetCompetitionsResponse
 	url := "/competitions"
 	_, err := c.get(url, &respData, nil)
@@ -24,7 +24,7 @@ func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
 	return respData.Results, nil
 }
 
-func (c *Client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
+func (c *client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
 	if options.CompetitionID == "" {
 		return nil, errors.New("competitionID is required but was not provided")
 	}
