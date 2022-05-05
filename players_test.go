@@ -8,12 +8,9 @@ import (
 )
 
 func TestGetPlayer(t *testing.T) {
-	client, err := fifa.NewClient(&fifa.Options{})
-	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
-		t.FailNow()
-	}
+	client := fifa.Client{}
 	resp, err := client.GetPlayer(&fifa.GetPlayerOptions{
-		PlayerID: "200704206",
+		PlayerId: "200704206",
 	})
 	if ok := assert.Nil(t, err, "expected no error with GetTeam, got: %s", err); !ok {
 		t.FailNow()

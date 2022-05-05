@@ -9,18 +9,18 @@ import (
 )
 
 type GetMatchEventOptions struct {
-	CompetitionID string
-	SeasonID      string
-	StageID       string
-	MatchID       string
+	CompetitionId string
+	SeasonId      string
+	StageId       string
+	MatchId       string
 }
 
 type GetMatchEventsResponse struct {
-	StageID       string          `json:"IdStage"`
-	MatchID       string          `json:"IdMatch"`
-	CompetitionID string          `json:"IdCompetition"`
-	SeasonID      string          `json:"IdSeason"`
-	GroupID       string          `json:"IdGroup"`
+	StageId       string          `json:"IdStage"`
+	MatchId       string          `json:"IdMatch"`
+	CompetitionId string          `json:"IdCompetition"`
+	SeasonId      string          `json:"IdSeason"`
+	GroupId       string          `json:"IdGroup"`
 	Event         []EventResponse `json:"Event"`
 	Properties    interface{}     `json:"Properties"`
 	IsUpdateable  bool            `json:"IsUpdateable"`
@@ -28,13 +28,13 @@ type GetMatchEventsResponse struct {
 
 type EventResponse struct {
 	Context             string                       `json:"Context"`
-	ID                  string                       `json:"IdEvent"`
-	Guid                uuid.UUID                    `json:"Guid"`
-	TeamID              string                       `json:"IdTeam"`
-	PlayerID            string                       `json:"IdPlayer"`
-	SubPlayerID         string                       `json:"IdSubPlayer"`
-	PersonID            string                       `json:"IdPerson"`
-	SubTeamID           string                       `json:"IdSubTeam"`
+	Id                  string                       `json:"IdEvent"`
+	GuId                uuid.UUID                    `json:"GuId"`
+	TeamId              string                       `json:"IdTeam"`
+	PlayerId            string                       `json:"IdPlayer"`
+	SubPlayerId         string                       `json:"IdSubPlayer"`
+	PersonId            string                       `json:"IdPerson"`
+	SubTeamId           string                       `json:"IdSubTeam"`
 	Timestamp           time.Time                    `json:"Timestamp"`
 	DateTimeUTC         time.Time                    `json:"DateTimeUTC"`
 	MatchMinute         string                       `json:"MatchMinute"`
@@ -55,20 +55,20 @@ type EventResponse struct {
 	EventDescription    []DefaultDescriptionResponse `json:"EventDescription"`
 }
 
-func (c *client) GetMatchEvents(options *GetMatchEventOptions) (*GetMatchEventsResponse, error) {
-	if options.CompetitionID == "" {
-		return nil, errors.New("competitionID is required but not provided")
+func (c *Client) GetMatchEvents(options *GetMatchEventOptions) (*GetMatchEventsResponse, error) {
+	if options.CompetitionId == "" {
+		return nil, errors.New("competitionId is required but not provIded")
 	}
-	if options.SeasonID == "" {
-		return nil, errors.New("seasonID is required but not provided")
+	if options.SeasonId == "" {
+		return nil, errors.New("seasonId is required but not provIded")
 	}
-	if options.StageID == "" {
-		return nil, errors.New("stageID is required but not provided")
+	if options.StageId == "" {
+		return nil, errors.New("stageId is required but not provIded")
 	}
-	if options.MatchID == "" {
-		return nil, errors.New("matchID is required but not provided")
+	if options.MatchId == "" {
+		return nil, errors.New("matchId is required but not provIded")
 	}
-	url := fmt.Sprintf("/timelines/%s/%s/%s/%s", options.CompetitionID, options.SeasonID, options.StageID, options.MatchID)
+	url := fmt.Sprintf("/timelines/%s/%s/%s/%s", options.CompetitionId, options.SeasonId, options.StageId, options.MatchId)
 	var respData GetMatchEventsResponse
 	_, err := c.get(url, &respData, nil)
 	if err != nil {

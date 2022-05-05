@@ -24,7 +24,7 @@
     "SportType": 0,
     "Properties": {
         "IdInfostrada": "25673",
-        "Providers": "GGG"
+        "ProvIders": "GGG"
     },
     "IsUpdateable": null
 }

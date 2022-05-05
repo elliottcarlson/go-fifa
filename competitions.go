@@ -11,10 +11,10 @@ type GetCompetitionsResponse struct {
 }
 
 type GetCompetitionsOptions struct {
-	CompetitionID string
+	CompetitionId string
 }
 
-func (c *client) GetCompetitions() ([]CompetitionResponse, error) {
+func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
 	var respData GetCompetitionsResponse
 	url := "/competitions"
 	_, err := c.get(url, &respData, nil)
@@ -24,12 +24,12 @@ func (c *client) GetCompetitions() ([]CompetitionResponse, error) {
 	return respData.Results, nil
 }
 
-func (c *client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
-	if options.CompetitionID == "" {
-		return nil, errors.New("competitionID is required but was not provided")
+func (c *Client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
+	if options.CompetitionId == "" {
+		return nil, errors.New("competitionId is required but was not provIded")
 	}
 	var respData CompetitionResponse
-	url := fmt.Sprintf("/competitions/%s", options.CompetitionID)
+	url := fmt.Sprintf("/competitions/%s", options.CompetitionId)
 	_, err := c.get(url, &respData, nil)
 	if err != nil {
 		return nil, err

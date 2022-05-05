@@ -3,12 +3,12 @@ package go_fifa
 import "fmt"
 
 type GetPlayerOptions struct {
-	PlayerID string
+	PlayerId string
 }
 
-func (c *client) GetPlayer(options *GetPlayerOptions) (*PlayerResponse, error) {
+func (c *Client) GetPlayer(options *GetPlayerOptions) (*PlayerResponse, error) {
 	var player PlayerResponse
-	url := fmt.Sprintf("/players/%s", options.PlayerID)
+	url := fmt.Sprintf("/players/%s", options.PlayerId)
 	_, err := c.get(url, &player, nil)
 	if err != nil {
 		return nil, err

@@ -32,7 +32,7 @@ const (
 	HALF_END           MatchEvent = 8
 	BLOCKED_SHOT       MatchEvent = 12
 	FOUL_UNKNOWN       MatchEvent = 14
-	OFFSIDE            MatchEvent = 15
+	OFFSIdE            MatchEvent = 15
 	CORNER_KICK        MatchEvent = 16
 	BLOCKED_SHOT_2     MatchEvent = 17
 	FOUL               MatchEvent = 18
@@ -55,11 +55,11 @@ type PaginatedResponse struct {
 }
 
 type MatchResponse struct {
-	ID                        string                       `json:"IdMatch"`
-	StageID                   string                       `json:"IdStage"`
-	GroupID                   string                       `json:"IdGroup"`
-	SeasonID                  string                       `json:"IdSeason"`
-	CompetitionID             string                       `json:"IdCompetition"`
+	Id                        string                       `json:"IdMatch"`
+	StageId                   string                       `json:"IdStage"`
+	GroupId                   string                       `json:"IdGroup"`
+	SeasonId                  string                       `json:"IdSeason"`
+	CompetitionId             string                       `json:"IdCompetition"`
 	Competition               []DefaultDescriptionResponse `json:"CompetitionName"`
 	Season                    []DefaultDescriptionResponse `json:"SeasonName"`
 	SeasonShortName           []interface{}                `json:"SeasonShortName"`
@@ -78,7 +78,7 @@ type MatchResponse struct {
 	FirstHalfTime             string                       `json:"FirstHalfTime"`
 	FirstHalfExtraTime        int                          `json:"FirstHalfExtraTime"`
 	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
-	WinnerID                  string                       `json:"Winner"`
+	WinnerId                  string                       `json:"Winner"`
 	Period                    PeriodEnum                   `json:"Period"`
 	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
 	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
@@ -101,16 +101,16 @@ type DefaultDescriptionResponse struct {
 }
 
 type StadiumResponse struct {
-	ID                 string                       `json:"IdStadium"`
+	Id                 string                       `json:"IdStadium"`
 	Name               []DefaultDescriptionResponse `json:"Name"`
 	Capacity           string                       `json:"Capacity"`
 	WebAddress         string                       `json:"WebAddress"`
 	Built              string                       `json:"Built"`
 	HasRoof            bool                         `json:"Roof"`
 	Turf               string                       `json:"Turf"`
-	CityID             string                       `json:"IdCity"`
+	CityId             string                       `json:"IdCity"`
 	City               []DefaultDescriptionResponse `json:"CityName"`
-	CountryID          string                       `json:"IdCountry"`
+	CountryId          string                       `json:"IdCountry"`
 	PostalCode         string                       `json:"PostcalCode"`
 	Street             string                       `json:"Street"`
 	Email              string                       `json:"Email"`
@@ -121,17 +121,17 @@ type StadiumResponse struct {
 	Latitude           string                       `json:"Latitude"`
 	Longitude          string                       `json:"Longitude"`
 	Length             string                       `json:"Length"`
-	Width              string                       `json:"Width"`
+	WIdth              string                       `json:"WIdth"`
 	Properties         interface{}                  `json:"Properties"`
 	IsUpdateable       bool                         `json:"IsUpdateable"`
 }
 
 type TeamResponse struct {
 	Score         int                          `json:"Score"`
-	Side          string                       `json:"Side"`
-	ID            string                       `json:"TeamID"`
+	SIde          string                       `json:"SIde"`
+	Id            string                       `json:"TeamId"`
 	PictureURL    string                       `json:"PictureURL"`
-	CountryID     string                       `json:"IdCountry"`
+	CountryId     string                       `json:"IdCountry"`
 	Type          int                          `json:"TeamType"`
 	AgeType       int                          `json:"AgeType"`
 	Tactics       string                       `json:"Tactics"`
@@ -144,11 +144,11 @@ type TeamResponse struct {
 	Substitutions []SubstitutionResponse       `json:"Substitutions"`
 	FootballType  int                          `json:"FootballType"`
 	Gender        Gender                       `json:"Gender"`
-	AssociationID string                       `json:"IdAssociation"`
+	AssociationId string                       `json:"IdAssociation"`
 }
 
 type WeatherResponse struct {
-	Humidity      string                       `json:"Humidity"`
+	HumIdity      string                       `json:"HumIdity"`
 	Temperature   string                       `json:"Temperature"`
 	WindSpeed     string                       `json:"WindSpeed"`
 	Type          int                          `json:"Type"`
@@ -163,8 +163,8 @@ type BallPossessionResponse struct {
 }
 
 type MatchPlayerResponse struct {
-	ID            string                       `json:"IdPlayer"`
-	TeamID        string                       `json:"IdTeam"`
+	Id            string                       `json:"IdPlayer"`
+	TeamId        string                       `json:"IdTeam"`
 	ShirtNumber   int                          `json:"ShirtNumber"`
 	Status        int                          `json:"Status"` // TODO: Enum
 	SpecialStatus string                       `json:"SpecialStatus"`
@@ -178,8 +178,8 @@ type MatchPlayerResponse struct {
 }
 
 type CoachResponse struct {
-	ID            string                       `json:"IdCoach"`
-	CountryID     string                       `json:"IdCountry"`
+	Id            string                       `json:"IdCoach"`
+	CountryId     string                       `json:"IdCountry"`
 	Name          []DefaultDescriptionResponse `json:"Name"`
 	Alias         []DefaultDescriptionResponse `json:"Alias"`
 	Role          int                          `json:"Role"` // TODO: Enum
@@ -189,31 +189,31 @@ type CoachResponse struct {
 type BookingResponse struct {
 	Card        int        `json:"Card"`
 	Period      PeriodEnum `json:"Period"`
-	EventID     string     `json:"IdEvent"`
+	EventId     string     `json:"IdEvent"`
 	EventNumber string     `json:"EventNumber"`
-	PlayerID    string     `json:"IdPlayer"`
-	CoachID     string     `json:"IdCoach"`
-	TeamID      string     `json:"IdTeam"`
+	PlayerId    string     `json:"IdPlayer"`
+	CoachId     string     `json:"IdCoach"`
+	TeamId      string     `json:"IdTeam"`
 	Minute      string     `json:"Minute"`
 	Reason      string     `json:"Reason"`
 }
 
 type SubstitutionResponse struct {
-	EventID       string                       `json:"IdEvent"`
+	EventId       string                       `json:"IdEvent"`
 	Period        PeriodEnum                   `json:"Period"`
 	Reason        int                          `json:"Reason"`            // TODO: Enum
 	Position      int                          `json:"SubstituePosition"` // TODO: Enum
-	PlayerOffID   string                       `json:"IdPlayerOff"`
-	PlayerOnID    string                       `json:"IdPlayerOn"`
+	PlayerOffId   string                       `json:"IdPlayerOff"`
+	PlayerOnId    string                       `json:"IdPlayerOn"`
 	PlayerOffName []DefaultDescriptionResponse `json:"PlayerOffName"`
 	PlayerOnName  []DefaultDescriptionResponse `json:"PlayerOnName"`
 	Minute        string                       `json:"Minute"`
-	TeamID        string                       `json:"TeamID"`
+	TeamId        string                       `json:"TeamId"`
 }
 
 type OfficialResponse struct {
-	ID            string                       `json:"OfficialsId"`
-	CountryID     string                       `json:"IdCountry"`
+	Id            string                       `json:"OfficialsId"`
+	CountryId     string                       `json:"IdCountry"`
 	Name          []DefaultDescriptionResponse `json:"Name"`
 	ShortName     []DefaultDescriptionResponse `json:"ShortName"`
 	Type          int                          `json:"OfficialType"` // TODO: Enum
@@ -221,21 +221,21 @@ type OfficialResponse struct {
 }
 
 type GoalResponse struct {
-	ID             string     `json:"IdGoal"`
-	TeamID         string     `json:"IdTeam"`
+	Id             string     `json:"IdGoal"`
+	TeamId         string     `json:"IdTeam"`
 	Type           int        `json:"Type"` // TODO: Enum
-	PlayerID       string     `json:"IdPlayer"`
+	PlayerId       string     `json:"IdPlayer"`
 	Minute         string     `json:"Minute"`
-	AssistPlayerID string     `json:"IdAssistPlayer"`
+	AssistPlayerId string     `json:"IdAssistPlayer"`
 	Period         PeriodEnum `json:"Period"`
 }
 
 type CompetitionResponse struct {
-	CompetitionID       string                       `json:"IdCompetition"`
+	CompetitionId       string                       `json:"IdCompetition"`
 	Name                []DefaultDescriptionResponse `json:"Name"`
-	ConfederationID     []string                     `json:"IdConfederation"`
-	MemberAssociationID []string                     `json:"IdMemberAssociation"`
-	OwnerID             string                       `json:"IdOwner"`
+	ConfederationId     []string                     `json:"IdConfederation"`
+	MemberAssociationId []string                     `json:"IdMemberAssociation"`
+	OwnerId             string                       `json:"IdOwner"`
 	Gender              Gender                       `json:"Gender"`
 	FootballType        int                          `json:"FootballType"`    // TODO: Enum
 	TeamType            int                          `json:"TeamType"`        // TODO: Enum
@@ -245,7 +245,7 @@ type CompetitionResponse struct {
 }
 
 type PlayerResponse struct {
-	ID                       string                       `json:"IdPlayer"`
+	Id                       string                       `json:"IdPlayer"`
 	Name                     []DefaultDescriptionResponse `json:"Name"`
 	Alias                    []DefaultDescriptionResponse `json:"Alias"`
 	Birthdate                time.Time                    `json:"Birthdate"`
@@ -265,4 +265,28 @@ type PlayerResponse struct {
 	Goals                    int                          `json:"Goals"`
 	Properties               interface{}                  `json:"Properties"`
 	IsUpdateable             bool                         `json:"IsUpdateable"`
+}
+
+type SeasonResponse struct {
+	Id                  string                       `json:"IdSeason"`
+	Name                []DefaultDescriptionResponse `json:"name"`
+	ShortName           []DefaultDescriptionResponse `json:"ShortName"`
+	Abbreviation        string                       `json:"abbreviationA`
+	MemberAssociations  []string                     `json:"IdMemberAssocation"`
+	Confederations      []string                     `json:"IdConfederation"`
+	CompetitionId       string                       `json:"IdCompetition"`
+	StartDate           time.Time                    `json:"StartDate"`
+	EndDate             time.Time                    `json:"EndDate"`
+	PictureURL          string                       `json:"PictureUrl"`
+	MascotPictureURL    string                       `json:"MascotPictureUrl"`
+	MatchBallPictureURL string                       `json:"MatchBallPictureUrl"`
+	HostTeams           interface{}                  `json:"HostTeams"`
+	SportType           int                          `json:"SportType"`
+	Properties          SeasonProperties             `json:"Properties"`
+	IsUpdateable        bool                         `json:"IsUpdateable"`
+}
+
+type SeasonProperties struct {
+	InfostradaId string `json:"IdInfostrada"`
+	Providers    string `json:"ProvIders"`
 }

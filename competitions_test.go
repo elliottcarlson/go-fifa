@@ -8,10 +8,7 @@ import (
 )
 
 func TestGetCompetitions(t *testing.T) {
-	client, err := fifa.NewClient(&fifa.Options{})
-	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
-		t.FailNow()
-	}
+	client := fifa.Client{}
 	resp, err := client.GetCompetitions()
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {
 		t.FailNow()
@@ -21,12 +18,9 @@ func TestGetCompetitions(t *testing.T) {
 	}
 }
 
-func TestGetCompetitionByID(t *testing.T) {
-	client, err := fifa.NewClient(&fifa.Options{})
-	if ok := assert.Nil(t, err, "expected no error with NewClient, got: %s", err); !ok {
-		t.FailNow()
-	}
-	resp, err := client.GetCompetition(&fifa.GetCompetitionsOptions{CompetitionID: "17"})
+func TestGetCompetitionById(t *testing.T) {
+	client := fifa.Client{}
+	resp, err := client.GetCompetition(&fifa.GetCompetitionsOptions{CompetitionId: "17"})
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {
 		t.FailNow()
 	}
