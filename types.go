@@ -271,7 +271,7 @@ type SeasonResponse struct {
 	Id                  string                       `json:"IdSeason"`
 	Name                []DefaultDescriptionResponse `json:"name"`
 	ShortName           []DefaultDescriptionResponse `json:"ShortName"`
-	Abbreviation        string                       `json:"abbreviationA`
+	Abbreviation        string                       `json:"abbreviation"`
 	MemberAssociations  []string                     `json:"IdMemberAssocation"`
 	Confederations      []string                     `json:"IdConfederation"`
 	CompetitionId       string                       `json:"IdCompetition"`
