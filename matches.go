@@ -19,7 +19,7 @@ type GetMatchesOptions struct {
 }
 
 type GetTeamMatchesOptions struct {
-	Count         int    `url:"count"`
+	Count         int    `url:"Count"`
 	TeamId        string `url:"IdTeam"`
 	SeasonId      string `url:"IdSeason"`
 	CompetitionId string `url:"IdCompetition"`
@@ -35,9 +35,11 @@ func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
 }
 
 func (c *Client) GetTodaysMatches() ([]MatchResponse, error) {
+	now := time.Now().UTC()
+	topHour := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), 0, 0, 0, time.UTC)
 	options := &GetMatchesOptions{
-		From: time.Now(),
-		To:   time.Now().Add(time.Hour * 24),
+		From: topHour,
+		To:   topHour.Add(time.Hour * 24),
 	}
 	var respData CurrentMatchesResponse
 	_, err := c.get("/calendar/matches", &respData, options)
