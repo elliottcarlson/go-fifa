@@ -31,7 +31,14 @@ func TestGetTodaysMatches(t *testing.T) {
 		if ok := assert.False(t, m.Date.Before(topHour), "date %s should not be before %s", m.Date, now); !ok {
 			t.FailNow()
 		}
+		if ok := assert.GreaterOrEqual(t, len(m.HomeTeam.Name), 1, "expected at least one home team"); !ok {
+			t.FailNow()
+		}
+		if ok := assert.GreaterOrEqual(t, len(m.AwayTeam.Name), 1, "expected at least one away team"); !ok {
+			t.FailNow()
+		}
 	}
+
 }
 
 func TestGetTeamMatches(t *testing.T) {

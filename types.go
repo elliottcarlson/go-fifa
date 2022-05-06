@@ -80,8 +80,8 @@ type MatchResponse struct {
 	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
 	WinnerId                  string                       `json:"Winner"`
 	Period                    PeriodEnum                   `json:"Period"`
-	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
-	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
+	HomeTeam                  TeamResponse                 `json:"Home"`
+	AwayTeam                  TeamResponse                 `json:"Away"`
 	BallPossession            BallPossessionResponse       `json:"BallPossession"`
 	TerritorialPossesion      string                       `json:"TerritorialPossesion"`
 	TerritorialThirdPossesion string                       `json:"TerritorialThirdPossesion"`
