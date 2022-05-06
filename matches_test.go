@@ -22,3 +22,15 @@ func TestGetTodaysMatches(t *testing.T) {
 		t.FailNow()
 	}
 }
+
+func TestGetTeammatches(t *testing.T) {
+	client := fifa.Client{}
+	_, err := client.GetTeamMatches(&fifa.GetTeamMatchesOptions{
+		TeamId:        "2000019544",
+		SeasonId:      "400198457",
+		CompetitionId: "2000001049",
+	})
+	if ok := assert.Nil(t, err, "expected no error with GetTeamMatches, got: %s", err); !ok {
+		t.FailNow()
+	}
+}

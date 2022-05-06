@@ -7,15 +7,11 @@ import (
 )
 
 const (
-	competitionId string = "2000000106" // 17 world cup
+	competitionId string = "17" // 17 world cup
 )
 
 func main() {
-	// client, err := fifa.NewClient(nil)
 	client := fifa.Client{}
-	if err != nil {
-		panic(err)
-	}
 	matches, err := client.GetCurrentMatches()
 	if err != nil {
 		panic(err)

@@ -6,9 +6,9 @@ type GetTeamOptions struct {
 	TeamId string
 }
 
-func (c *Client) GetTeam(options *GetTeamOptions) (*TeamResponse, error) {
+func (c *Client) GetTeam(opts *GetTeamOptions) (*TeamResponse, error) {
 	var team TeamResponse
-	url := fmt.Sprintf("/teams/%s", options.TeamId)
+	url := fmt.Sprintf("/teams/%s", opts.TeamId)
 	_, err := c.get(url, &team, nil)
 	if err != nil {
 		return nil, err

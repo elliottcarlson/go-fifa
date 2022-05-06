@@ -1,6 +1,8 @@
 package go_fifa
 
-import "time"
+import (
+	"time"
+)
 
 type CurrentMatchesResponse struct {
 	PaginatedResponse
@@ -11,9 +13,16 @@ type GetCurrentMatchesOptions struct {
 	Competitions []string
 }
 
-type GetTodaysMatchesOptions struct {
-	From time.Time `query:"from"`
-	To   time.Time `query:"to"`
+type GetMatchesOptions struct {
+	From time.Time `url:"from"`
+	To   time.Time `url:"to"`
+}
+
+type GetTeamMatchesOptions struct {
+	Count         int    `url:"count"`
+	TeamId        string `url:"IdTeam"`
+	SeasonId      string `url:"IdSeason"`
+	CompetitionId string `url:"IdCompetition"`
 }
 
 func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
@@ -26,12 +35,24 @@ func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
 }
 
 func (c *Client) GetTodaysMatches() ([]MatchResponse, error) {
-	options := &GetTodaysMatchesOptions{
+	options := &GetMatchesOptions{
 		From: time.Now(),
 		To:   time.Now().Add(time.Hour * 24),
 	}
 	var respData CurrentMatchesResponse
 	_, err := c.get("/calendar/matches", &respData, options)
+	if err != nil {
+		return nil, err
+	}
+	return respData.Results, nil
+}
+
+func (c *Client) GetTeamMatches(opts *GetTeamMatchesOptions) ([]MatchResponse, error) {
+	var respData CurrentMatchesResponse
+	if opts.Count == 0 {
+		opts.Count = 500
+	}
+	_, err := c.get("/calendar/matches", &respData, opts)
 	if err != nil {
 		return nil, err
 	}

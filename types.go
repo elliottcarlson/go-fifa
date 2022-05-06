@@ -32,7 +32,7 @@ const (
 	HALF_END           MatchEvent = 8
 	BLOCKED_SHOT       MatchEvent = 12
 	FOUL_UNKNOWN       MatchEvent = 14
-	OFFSIdE            MatchEvent = 15
+	OFFSIDE            MatchEvent = 15
 	CORNER_KICK        MatchEvent = 16
 	BLOCKED_SHOT_2     MatchEvent = 17
 	FOUL               MatchEvent = 18
@@ -121,14 +121,14 @@ type StadiumResponse struct {
 	Latitude           string                       `json:"Latitude"`
 	Longitude          string                       `json:"Longitude"`
 	Length             string                       `json:"Length"`
-	WIdth              string                       `json:"WIdth"`
+	Width              string                       `json:"Width"`
 	Properties         interface{}                  `json:"Properties"`
 	IsUpdateable       bool                         `json:"IsUpdateable"`
 }
 
 type TeamResponse struct {
 	Score         int                          `json:"Score"`
-	SIde          string                       `json:"SIde"`
+	Side          string                       `json:"Side"`
 	Id            string                       `json:"TeamId"`
 	PictureURL    string                       `json:"PictureURL"`
 	CountryId     string                       `json:"IdCountry"`
@@ -148,7 +148,7 @@ type TeamResponse struct {
 }
 
 type WeatherResponse struct {
-	HumIdity      string                       `json:"HumIdity"`
+	Humidity      string                       `json:"Humidity"`
 	Temperature   string                       `json:"Temperature"`
 	WindSpeed     string                       `json:"WindSpeed"`
 	Type          int                          `json:"Type"`
@@ -289,4 +289,64 @@ type SeasonResponse struct {
 type SeasonProperties struct {
 	InfostradaId string `json:"IdInfostrada"`
 	Providers    string `json:"ProvIders"`
+}
+
+type StandingsMatchResult struct {
+	MatchId   string    `json:"IdMatch"`
+	StartTime time.Time `json:"StartTime"`
+	Result    int       `json:"Result"`
+	GroupId   string    `json:"IdGroup"`
+	StageId   string    `json:"IdStage"`
+}
+
+type StandingsProperties struct {
+	InfostradaId string `json:"IdInfostrada"`
+}
+
+type StandingResponse struct {
+	Results []StandingsResult `json:"Results"`
+}
+
+type StandingsResult struct {
+	MatchDay            int                    `json:"MatchDay"`
+	CompetitionId       string                 `json:"IdCompetition"`
+	SeasonId            string                 `json:"IdSeason"`
+	GroupId             string                 `json:"IdGroup"`
+	Date                time.Time              `json:"Date"`
+	Group               interface{}            `json:"Group"`
+	Won                 int                    `json:"Won"`
+	Lost                int                    `json:"Lost"`
+	Drawn               int                    `json:"Drawn"`
+	Played              int                    `json:"Played"`
+	HomeWon             int                    `json:"HomeWon"`
+	HomeLost            int                    `json:"HomeLost"`
+	HomeDrawn           int                    `json:"HomeDrawn"`
+	HomePlayed          int                    `json:"HomePlayed"`
+	AwayWon             int                    `json:"AwayWon"`
+	AwayLost            int                    `json:"AwayLost"`
+	AwayDrawn           int                    `json:"AwayDrawn"`
+	AwayPlayed          int                    `json:"AwayPlayed"`
+	Against             int                    `json:"Against"`
+	For                 int                    `json:"For"`
+	HomeAgainst         int                    `json:"HomeAgainst"`
+	HomeFor             int                    `json:"HomeFor"`
+	AwayAgainst         int                    `json:"AwayAgainst"`
+	AwayFor             int                    `json:"AwayFor"`
+	Position            int                    `json:"Position"`
+	HomePosition        int                    `json:"HomePosition"`
+	AwayPosition        int                    `json:"AwayPosition"`
+	Points              int                    `json:"Points"`
+	HomePoints          int                    `json:"HomePoints"`
+	AwayPoints          int                    `json:"AwayPoints"`
+	PreviousPosition    int                    `json:"PreviousPosition"`
+	GoalsDifference     int                    `json:"GoalsDiference"` // Typo is expected
+	Team                TeamResponse           `json:"Team"`
+	StartDate           time.Time              `json:"StartDate"`
+	EndDate             time.Time              `json:"EndDate"`
+	FairPlayCoefficient float32                `json:"FairPlayCoefficient"`
+	WinByExtraTime      int                    `json:"WinByExtraTime"`
+	WinByPenalty        int                    `json:"WinByPenalty"`
+	MatchResults        []StandingsMatchResult `json:"MatchResults"`
+	Properties          StandingsProperties    `json:"Properties"`
+	IsUpdateable        bool                   `json:"IsUpdateable"`
 }

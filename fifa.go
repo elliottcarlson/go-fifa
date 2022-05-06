@@ -40,7 +40,6 @@ func (c *Client) sendRequest(method string, path string, respData interface{}, r
 	if err != nil {
 		return nil, err
 	}
-
 	err = c.doRequest(req, respData)
 	if err != nil {
 		return nil, err
