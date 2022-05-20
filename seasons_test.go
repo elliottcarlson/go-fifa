@@ -1,7 +1,6 @@
 package go_fifa_test
 
 import (
-	"fmt"
 	"testing"
 
 	fifa "github.com/ImDevinC/go-fifa"
@@ -28,5 +27,10 @@ func TestGetSeasonStandings(t *testing.T) {
 	if ok := assert.Nil(t, err, "expected no error with GetSeasonStandings, got: %s", err); !ok {
 		t.FailNow()
 	}
-	fmt.Printf("%+v", resp[0])
+	if ok := assert.Greater(t, len(resp), 0, "expected more than one result, got none"); !ok {
+		t.FailNow()
+	}
+	if ok := assert.Equal(t, resp[0].CompetitionId, "2000001049", "incorrect competition id"); !ok {
+		t.FailNow()
+	}
 }

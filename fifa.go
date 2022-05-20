@@ -86,7 +86,6 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 		}
 		req.URL.RawQuery = v.Encode()
 	}
-	fmt.Println(req.URL.String())
 	return req, nil
 }
 
