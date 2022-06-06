@@ -7,12 +7,14 @@ Create a new client using the `NewClient()` function. You will need to pass in a
 ### Currently Supported
 The following endpoints are currently supported:
 
-| API Endpoint                                        | Function              |
-| --------------------------------------------------- | --------------------- |
-| `/competitions`                                     | `GetCompetitions()`   |
-| `/competitions/{competition}`                       | `GetCompetition()`    |
-| `/timelines/{competition}/{season}/{stage}/{match}` | `GetMatchEvents()`    |
-| `/live/football/now`                                | `GetCurrentMatches()` |
-| `/calendar/matches`                                 | `GetTodaysMatches()`  |
-| `/teams/{team}`                                     | `GetTeam()`           |
-| `/players/{player}`                                 | `GetPlayer()`         |
+| API Endpoint                                                | Function               |
+| ----------------------------------------------------------- | ---------------------- |
+| `/competitions`                                             | `GetCompetitions()`    |
+| `/competitions/{competitionId}`                             | `GetCompetition()`     |
+| `/timelines/{competitionId}/{seasonId}/{stageId}/{matchId}` | `GetMatchEvents()`     |
+| `/live/football/now`                                        | `GetCurrentMatches()`  |
+| `/calendar/matches`                                         | `GetTodaysMatches()`   |
+| `/teams/{teamId}`                                           | `GetTeam()`            |
+| `/players/{playerId}`                                       | `GetPlayer()`          |
+| `/seasons/{seasonId}`                                       | `GetSeason()`          |
+| `/calendar/{competitionId}/{seasonId}/{stageId}`            | `GetSeasonStandings()` |
