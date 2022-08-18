@@ -73,6 +73,7 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 
 func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 	c.setRequestHeaders(req)
+	fmt.Println(req.URL)
 	if c.Client == nil {
 		c.Client = http.DefaultClient
 	}

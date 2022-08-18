@@ -34,12 +34,27 @@ func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
 	return respData.Results, nil
 }
 
-func (c *Client) GetTodaysMatches() ([]MatchResponse, error) {
-	now := time.Now().UTC()
-	topHour := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), 0, 0, 0, time.UTC)
+func (c *Client) GetUpcomingMatches() ([]MatchResponse, error) {
+	now := time.Now()
+	startHour := time.Date(now.Year(), now.Month(), now.Day(), now.Hour(), 0, 0, 0, now.Location()).UTC()
 	options := &GetMatchesOptions{
-		From: topHour,
-		To:   topHour.Add(time.Hour * 24),
+		From: startHour,
+		To:   startHour.Add(time.Hour * 24),
+	}
+	var respData CurrentMatchesResponse
+	_, err := c.get("/calendar/matches", &respData, options)
+	if err != nil {
+		return nil, err
+	}
+	return respData.Results, nil
+}
+
+func (c *Client) GetTodaysMatches() ([]MatchResponse, error) {
+	now := time.Now()
+	startDay := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, now.Location()).UTC()
+	options := &GetMatchesOptions{
+		From: startDay,
+		To:   startDay.Add(time.Hour * 24),
 	}
 	var respData CurrentMatchesResponse
 	_, err := c.get("/calendar/matches", &respData, options)
