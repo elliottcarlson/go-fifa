@@ -4,20 +4,18 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/google/go-querystring/query"
 )
 
-///////////////////////////////////
-
-///////////////////////////////////
-
 const (
-	defaultAPIBaseURL = "https://api.fifa.com/api/v1"
-	defaultUserAgent  = "go-fifa"
-	defaultLanguage   = "en-US,en"
+	defaultAPIBaseURL   = "https://api.fifa.com/api/v1"
+	defaultAPIBaseURLV2 = "https://mcls-api.mycujoo.tv"
+	defaultUserAgent    = "go-fifa"
+	defaultLanguage     = "en-US,en"
+	defaultToken        = "Bearer 0FIQ3SKOSF09NH33IQO7IRARV5BSPT2N"
 )
 
 type Client struct {
@@ -99,7 +97,7 @@ func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 		return fmt.Errorf("failed to execute API request: %s", err.Error())
 	}
 	defer response.Body.Close()
-	bodyBytes, err := ioutil.ReadAll(response.Body)
+	bodyBytes, err := io.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}
@@ -114,10 +112,15 @@ func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 }
 
 func (c *Client) setRequestHeaders(req *http.Request) {
+	ua := defaultUserAgent
+	lang := defaultLanguage
 	if c.UserAgent != "" {
-		req.Header.Add("User-Agent", c.UserAgent)
+		ua = c.UserAgent
 	}
 	if c.Language != "" {
-		req.Header.Add("Accept-Language", c.Language)
+		lang = c.Language
 	}
+	req.Header.Add("Accept-Language", lang)
+	req.Header.Add("User-Agent", ua)
+	req.Header.Add("Authorization", defaultToken)
 }

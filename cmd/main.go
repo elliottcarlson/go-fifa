@@ -49,6 +49,11 @@ func getCompetitionsByName(client *fifa.Client, input string) error {
 }
 func main() {
 	client := &fifa.Client{}
+	matches, err := client.GetLiveEvents()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%+v", matches)
 	// showCompetitions(client)
-	getCompetitionsByName(client, "world cup")
+	// getCompetitionsByName(client, "world cup")
 }
