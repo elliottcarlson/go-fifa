@@ -22,31 +22,34 @@ const (
 type MatchEvent int
 
 const (
-	GOAL_SCORED        MatchEvent = 0
-	YELLOW_CARD        MatchEvent = 2
-	RED_CARD           MatchEvent = 3
-	DOUBLE_YELLOW      MatchEvent = 4
-	SUBSTITUTION       MatchEvent = 5
-	IGNORE             MatchEvent = 6
-	MATCH_START        MatchEvent = 7
-	HALF_END           MatchEvent = 8
-	BLOCKED_SHOT       MatchEvent = 12
-	FOUL_UNKNOWN       MatchEvent = 14
-	OFFSIDE            MatchEvent = 15
-	CORNER_KICK        MatchEvent = 16
-	BLOCKED_SHOT_2     MatchEvent = 17
-	FOUL               MatchEvent = 18
-	MATCH_END          MatchEvent = 26
-	CROSSBAR           MatchEvent = 32
-	CROSSBAR_2         MatchEvent = 33
-	OWN_GOAL           MatchEvent = 34
-	HAND_BALL          MatchEvent = 37
-	FREE_KICK_GOAL     MatchEvent = 39
-	PENALTY_GOAL       MatchEvent = 41
-	FREE_KICK_CROSSBAR MatchEvent = 44
-	PENALTY_MISSED     MatchEvent = 60
-	PENALTY_MISSED_2   MatchEvent = 65
-	VAR_PENALTY        MatchEvent = 72
+	GoalScore        MatchEvent = 0
+	YellowCard       MatchEvent = 2
+	RedCard          MatchEvent = 3
+	DoubleYellow     MatchEvent = 4
+	Substitution     MatchEvent = 5
+	Ignore           MatchEvent = 6
+	MatchStart       MatchEvent = 7
+	HalfEnd          MatchEvent = 8
+	MatchPaused      MatchEvent = 9
+	MatchResumed     MatchEvent = 10
+	BlockedShot      MatchEvent = 12
+	FoulUnknown      MatchEvent = 14
+	Offside          MatchEvent = 15
+	CornerKick       MatchEvent = 16
+	ShotBlocked      MatchEvent = 17
+	Foul             MatchEvent = 18
+	MatchEnd         MatchEvent = 26
+	Crossbar         MatchEvent = 32
+	Crossbar2        MatchEvent = 33
+	OwnGoal          MatchEvent = 34
+	HandBall         MatchEvent = 37
+	FreeKickGoal     MatchEvent = 39
+	PenaltyGoal      MatchEvent = 41
+	FreeKickCrossbar MatchEvent = 44
+	PenaltyMissed    MatchEvent = 60
+	PenaltyMissed2   MatchEvent = 65
+	GoalieSaved      MatchEvent = 57
+	VARPenalty       MatchEvent = 72
 )
 
 type PaginatedResponse struct {
@@ -80,8 +83,8 @@ type MatchResponse struct {
 	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
 	WinnerId                  string                       `json:"Winner"`
 	Period                    PeriodEnum                   `json:"Period"`
-	HomeTeam                  TeamResponse                 `json:"Home"`
-	AwayTeam                  TeamResponse                 `json:"Away"`
+	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
+	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
 	BallPossession            BallPossessionResponse       `json:"BallPossession"`
 	TerritorialPossesion      string                       `json:"TerritorialPossesion"`
 	TerritorialThirdPossesion string                       `json:"TerritorialThirdPossesion"`
@@ -103,7 +106,7 @@ type DefaultDescriptionResponse struct {
 type StadiumResponse struct {
 	Id                 string                       `json:"IdStadium"`
 	Name               []DefaultDescriptionResponse `json:"Name"`
-	Capacity           string                       `json:"Capacity"`
+	Capacity           int                          `json:"Capacity"`
 	WebAddress         string                       `json:"WebAddress"`
 	Built              string                       `json:"Built"`
 	HasRoof            bool                         `json:"Roof"`
@@ -118,8 +121,8 @@ type StadiumResponse struct {
 	Phone              string                       `json:"Phone"`
 	AffiliationCountry string                       `json:"AffiliationCountry"`
 	AffiliationRegion  string                       `json:"AffiliationRegion"`
-	Latitude           string                       `json:"Latitude"`
-	Longitude          string                       `json:"Longitude"`
+	Latitude           float64                      `json:"Latitude"`
+	Longitude          float64                      `json:"Longitude"`
 	Length             string                       `json:"Length"`
 	Width              string                       `json:"Width"`
 	Properties         interface{}                  `json:"Properties"`

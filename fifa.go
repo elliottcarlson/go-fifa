@@ -14,7 +14,7 @@ import (
 ///////////////////////////////////
 
 const (
-	defaultAPIBaseURL = "https://api.fifa.com/api/v1"
+	defaultAPIBaseURL = "https://api.fifa.com/api/v3"
 	defaultUserAgent  = "go-fifa"
 	defaultLanguage   = "en-US,en"
 )
@@ -73,7 +73,6 @@ func (c *Client) newStandardRequest(url string, method string, data interface{})
 
 func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 	c.setRequestHeaders(req)
-	fmt.Println(req.URL)
 	if c.Client == nil {
 		c.Client = http.DefaultClient
 	}

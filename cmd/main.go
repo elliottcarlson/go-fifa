@@ -47,8 +47,34 @@ func getCompetitionsByName(client *fifa.Client, input string) error {
 	}
 	return nil
 }
+
+func getLiveMatches(client *fifa.Client) error {
+	matches, err := client.GetCurrentMatches()
+	if err != nil {
+		return err
+	}
+	for _, m := range matches {
+		fmt.Printf("%s: %s vs %s (%s/%s/%s/%s)\n", m.Competition[0].Description, m.HomeTeam.Name[0].Description, m.AwayTeam.Name[0].Description, m.CompetitionId, m.SeasonId, m.StageId, m.Id)
+	}
+	return nil
+}
+
+func getMatchData(client *fifa.Client) error {
+	events, err := client.GetMatchEvents(&fifa.GetMatchEventOptions{
+		CompetitionId: "2000000005",
+		SeasonId:      "400250052",
+		StageId:       "b1ayaoa4q68n6464fy4orklqs",
+		MatchId:       "3y748w6ppuxciynnoonrt9jx0",
+	})
+	if err != nil {
+		return err
+	}
+	fmt.Printf("%+v\n", events)
+	return nil
+}
+
 func main() {
 	client := &fifa.Client{}
-	// showCompetitions(client)
-	getCompetitionsByName(client, "world cup")
+	getMatchData(client)
+
 }

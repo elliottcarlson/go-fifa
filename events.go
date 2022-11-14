@@ -21,7 +21,7 @@ type GetMatchEventsResponse struct {
 	CompetitionId string          `json:"IdCompetition"`
 	SeasonId      string          `json:"IdSeason"`
 	GroupId       string          `json:"IdGroup"`
-	Event         []EventResponse `json:"Event"`
+	Events        []EventResponse `json:"Event"`
 	Properties    interface{}     `json:"Properties"`
 	IsUpdateable  bool            `json:"IsUpdateable"`
 }

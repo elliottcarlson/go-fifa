@@ -7,6 +7,9 @@ Create a new client using the `NewClient()` function. You will need to pass in a
 ### Currently Supported
 The following endpoints are currently supported:
 
+> **Warning**
+> There may be issues with the new v3 API
+
 | API Endpoint                                                | Function               |
 | ----------------------------------------------------------- | ---------------------- |
 | `/competitions`                                             | `GetCompetitions()`    |
