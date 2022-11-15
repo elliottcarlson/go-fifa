@@ -42,10 +42,10 @@ func TestGetTodaysMatches(t *testing.T) {
 	if ok := assert.Nil(t, err, "expected no error with GetMatchEvents, got: %s", err); !ok {
 		t.FailNow()
 	}
-	if ok := assert.Greater(t, len(evts.Event), 0, "expected more results"); !ok {
+	if ok := assert.Greater(t, len(evts.Events), 0, "expected more results"); !ok {
 		t.FailNow()
 	}
-	fmt.Println(evts.Event[0])
+	fmt.Println(evts.Events[0])
 	// for _, m := range resp {
 	// 	if ok := assert.False(t, m.Date.Before(startDate), "date %s should not be before %s", m.Date, now); !ok {
 	// 		t.FailNow()

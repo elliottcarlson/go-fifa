@@ -28,7 +28,7 @@ type GetMatchEventsResponse struct {
 
 type EventResponse struct {
 	Context             string                       `json:"Context"`
-	Id                  string                       `json:"IdEvent"`
+	Id                  string                       `json:"EventId"`
 	GuId                uuid.UUID                    `json:"GuId"`
 	TeamId              string                       `json:"IdTeam"`
 	PlayerId            string                       `json:"IdPlayer"`
