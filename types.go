@@ -353,3 +353,49 @@ type StandingsResult struct {
 	Properties          StandingsProperties    `json:"Properties"`
 	IsUpdateable        bool                   `json:"IsUpdateable"`
 }
+
+type MatchDataResponse struct {
+	MatchId                   string                       `json:"IdMatch"`
+	StageId                   string                       `json:"IdStage"`
+	GroupId                   string                       `json:"IdGroup"`
+	SeasonId                  string                       `json:"IdSeason"`
+	CompetitionId             string                       `json:"IdCompetition"`
+	CompetitionName           []DefaultDescriptionResponse `json:"CompetitionName"`
+	SeasonName                []DefaultDescriptionResponse `json:"SeasonName"`
+	SeasonShortName           []DefaultDescriptionResponse `json:"SeasonShortName"`
+	Stadium                   StadiumResponse              `json:"Stadium"`
+	ResultType                int                          `json:"ResultType"`
+	MatchDay                  interface{}                  `json:"MatchDay"`
+	HomeTeamPenaltyScore      int                          `json:"HomeTeamPenaltyScore"`
+	AwayTeamPenaltyScore      int                          `json:"AwayTeamPenaltyScore"`
+	AggregateHomeTeamScore    int                          `json:"AggregateHomeTeamScore"`
+	AggregateAwayTeamScore    int                          `json:"AggregateAwayTeamScore"`
+	Weather                   interface{}                  `json:"Weather"`
+	Attendance                string                       `json:"Attendance"`
+	Date                      time.Time                    `json:"Date"`
+	LocalDate                 time.Time                    `json:"LocalDate"`
+	MatchTime                 string                       `json:"MatchTime"`
+	SecondHalfTime            interface{}                  `json:"SecondHalfTime"`
+	FirstHalfTime             interface{}                  `json:"FirstHalfTime"`
+	FirstHalfExtraTime        int                          `json:"FirstHalfExtraTime"`
+	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
+	Winner                    interface{}                  `json:"Winner"`
+	Period                    int                          `json:"Period"`
+	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
+	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
+	BallPossession            BallPossessionResponse       `json:"BallPossession"`
+	TerritorialPossesion      interface{}                  `json:"TerritorialPossesion"`
+	TerritorialThirdPossesion interface{}                  `json:"TerritorialThirdPossesion"`
+	Officials                 []OfficialResponse           `json:"Officials"`
+	MatchStatus               int                          `json:"MatchStatus"`
+	GroupName                 []interface{}                `json:"GroupName"`
+	StageName                 []DefaultDescriptionResponse `json:"StageName"`
+	OfficialityStatus         int                          `json:"OfficialityStatus"`
+	TimeDefined               bool                         `json:"TimeDefined"`
+	Properties                StatsResponse                `json:"Properties"`
+	IsUpdateable              interface{}                  `json:"IsUpdateable"`
+}
+
+type StatsResponse struct {
+	StatsPerformId string `json:"IdStatsPerform"`
+}

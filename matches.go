@@ -1,6 +1,7 @@
 package go_fifa
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -23,6 +24,13 @@ type GetTeamMatchesOptions struct {
 	TeamId        string `url:"IdTeam"`
 	SeasonId      string `url:"IdSeason"`
 	CompetitionId string `url:"IdCompetition"`
+}
+
+type GetMatchDataOptions struct {
+	CompetitionId string
+	SeasonId      string
+	StageId       string
+	MatchId       string
 }
 
 func (c *Client) GetCurrentMatches() ([]MatchResponse, error) {
@@ -74,4 +82,14 @@ func (c *Client) GetTeamMatches(opts *GetTeamMatchesOptions) ([]MatchResponse, e
 		return nil, err
 	}
 	return respData.Results, nil
+}
+
+func (c *Client) GetMatchData(options *GetMatchDataOptions) (MatchDataResponse, error) {
+	var respData MatchDataResponse
+	url := fmt.Sprintf("/live/football/%s/%s/%s/%s", options.CompetitionId, options.SeasonId, options.StageId, options.MatchId)
+	_, err := c.get(url, &respData, nil)
+	if err != nil {
+		return MatchDataResponse{}, err
+	}
+	return respData, nil
 }
