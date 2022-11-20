@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetTeam(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	_, err := client.GetTeam(&fifa.GetTeamOptions{
 		TeamId: "1884381",

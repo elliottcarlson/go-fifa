@@ -49,7 +49,7 @@ type EventResponse struct {
 	GoalGatePositionY   float32                      `json:"GoalGatePositionY"`
 	GoalGatePositionZ   float32                      `json:"GoalGatePositionZ"`
 	VarDetail           string                       `json:"VarDetail"`
-	VarNotificationData string                       `json:"VarNotificationData"`
+	VarNotificationData VarNotificationDataResponse  `json:"VarNotificationData"`
 	HomePenaltyGoals    int                          `json:"HomePenaltyGoals"`
 	AwayPenaltyGoals    int                          `json:"AwayPenaltyGoals"`
 	EventDescription    []DefaultDescriptionResponse `json:"EventDescription"`

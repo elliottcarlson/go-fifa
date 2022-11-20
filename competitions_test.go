@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetCompetitions(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	resp, err := client.GetCompetitions()
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {
@@ -19,6 +20,7 @@ func TestGetCompetitions(t *testing.T) {
 }
 
 func TestGetCompetitionById(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	resp, err := client.GetCompetition(&fifa.GetCompetitionsOptions{CompetitionId: "17"})
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {

@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetSeason(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	_, err := client.GetSeason(&fifa.GetSeasonOptions{
 		SeasonId: "400198457",
@@ -18,6 +19,7 @@ func TestGetSeason(t *testing.T) {
 }
 
 func TestGetSeasonStandings(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	resp, err := client.GetSeasonStandings(&fifa.GetSeasonStandingsOptions{
 		CompetitionId: "2000001049",

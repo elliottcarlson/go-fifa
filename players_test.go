@@ -8,6 +8,7 @@ import (
 )
 
 func TestGetPlayer(t *testing.T) {
+	t.Parallel()
 	client := fifa.Client{}
 	resp, err := client.GetPlayer(&fifa.GetPlayerOptions{
 		PlayerId: "200704206",
