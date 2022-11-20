@@ -169,15 +169,15 @@ type MatchPlayerResponse struct {
 	Id            string                       `json:"IdPlayer"`
 	TeamId        string                       `json:"IdTeam"`
 	ShirtNumber   int                          `json:"ShirtNumber"`
-	Status        int                          `json:"Status"` // TODO: Enum
-	SpecialStatus string                       `json:"SpecialStatus"`
+	Status        int                          `json:"Status"`        // TODO: Enum
+	SpecialStatus interface{}                  `json:"SpecialStatus"` // TODO: Evaluate
 	IsCaptain     bool                         `json:"Captain"`
 	Name          []DefaultDescriptionResponse `json:"PlayerName"`
 	ShortName     []DefaultDescriptionResponse `json:"ShortName"`
 	Position      int                          `json:"Position"`    // TODO: Enum
 	FieldStatus   int                          `json:"FieldStatus"` // TODO: Enum
-	LineupX       string                       `json:"LineupX"`
-	LineupY       string                       `json:"LineupY"`
+	LineupX       interface{}                  `json:"LineupX"`     // TODO: Evaluate
+	LineupY       interface{}                  `json:"LineupY"`     // TODO: Evaluate
 }
 
 type CoachResponse struct {
