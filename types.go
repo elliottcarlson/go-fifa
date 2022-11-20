@@ -38,6 +38,7 @@ const (
 	CornerKick       MatchEvent = 16
 	ShotBlocked      MatchEvent = 17
 	Foul             MatchEvent = 18
+	Unknown3         MatchEvent = 20
 	ThrowIn          MatchEvent = 24
 	Clearance        MatchEvent = 25
 	MatchEnd         MatchEvent = 26
