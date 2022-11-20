@@ -32,7 +32,7 @@ const (
 	HalfEnd          MatchEvent = 8
 	MatchPaused      MatchEvent = 9
 	MatchResumed     MatchEvent = 10
-	BlockedShot      MatchEvent = 12
+	GoalAttempt      MatchEvent = 12
 	FoulUnknown      MatchEvent = 14
 	Offside          MatchEvent = 15
 	CornerKick       MatchEvent = 16
