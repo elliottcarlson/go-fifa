@@ -51,6 +51,7 @@ const (
 	FreeKickGoal     MatchEvent = 39
 	PenaltyGoal      MatchEvent = 41
 	FreeKickCrossbar MatchEvent = 44
+	FreeKickPost     MatchEvent = 49
 	PenaltyMissed    MatchEvent = 60
 	PenaltyMissed2   MatchEvent = 65
 	GoalieSaved      MatchEvent = 57
