@@ -41,6 +41,7 @@ const (
 	ThrowIn          MatchEvent = 24
 	Clearance        MatchEvent = 25
 	MatchEnd         MatchEvent = 26
+	Unknown2         MatchEvent = 27
 	Crossbar         MatchEvent = 32
 	Crossbar2        MatchEvent = 33
 	OwnGoal          MatchEvent = 34
