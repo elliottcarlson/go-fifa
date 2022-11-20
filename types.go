@@ -27,7 +27,7 @@ const (
 	RedCard          MatchEvent = 3
 	DoubleYellow     MatchEvent = 4
 	Substitution     MatchEvent = 5
-	Ignore           MatchEvent = 6
+	PenaltyAwarded   MatchEvent = 6
 	MatchStart       MatchEvent = 7
 	HalfEnd          MatchEvent = 8
 	MatchPaused      MatchEvent = 9
@@ -38,6 +38,8 @@ const (
 	CornerKick       MatchEvent = 16
 	ShotBlocked      MatchEvent = 17
 	Foul             MatchEvent = 18
+	ThrowIn          MatchEvent = 24
+	Clearance        MatchEvent = 25
 	MatchEnd         MatchEvent = 26
 	Crossbar         MatchEvent = 32
 	Crossbar2        MatchEvent = 33
@@ -50,6 +52,7 @@ const (
 	PenaltyMissed2   MatchEvent = 65
 	GoalieSaved      MatchEvent = 57
 	VARPenalty       MatchEvent = 72
+	Unknown          MatchEvent = 9999
 )
 
 type PaginatedResponse struct {
