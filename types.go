@@ -40,6 +40,7 @@ const (
 	Foul             MatchEvent = 18
 	CoinToss         MatchEvent = 19
 	Unknown3         MatchEvent = 20
+	DroppedBall      MatchEvent = 23
 	ThrowIn          MatchEvent = 24
 	Clearance        MatchEvent = 25
 	MatchEnd         MatchEvent = 26
