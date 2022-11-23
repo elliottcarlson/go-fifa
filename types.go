@@ -23,6 +23,7 @@ type MatchEvent int
 
 const (
 	GoalScore        MatchEvent = 0
+	Assist           MatchEvent = 1
 	YellowCard       MatchEvent = 2
 	RedCard          MatchEvent = 3
 	DoubleYellow     MatchEvent = 4
