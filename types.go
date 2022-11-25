@@ -141,8 +141,8 @@ type StadiumResponse struct {
 type TeamResponse struct {
 	Score         int                          `json:"Score"`
 	Side          string                       `json:"Side"`
-	Id            string                       `json:"TeamId"`
-	PictureURL    string                       `json:"PictureURL"`
+	Id            string                       `json:"IdTeam"`
+	PictureURL    string                       `json:"PictureUrl"`
 	CountryId     string                       `json:"IdCountry"`
 	Type          int                          `json:"TeamType"`
 	AgeType       int                          `json:"AgeType"`
@@ -157,6 +157,7 @@ type TeamResponse struct {
 	FootballType  int                          `json:"FootballType"`
 	Gender        Gender                       `json:"Gender"`
 	AssociationId string                       `json:"IdAssociation"`
+	ShortClubName string			   `json:"ShortClubName"`
 }
 
 type WeatherResponse struct {
