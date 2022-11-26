@@ -54,7 +54,7 @@ func getLiveMatches(client *fifa.Client) error {
 		return err
 	}
 	for _, m := range matches {
-		fmt.Printf("%s: %s vs %s (%s/%s/%s/%s)\n", m.Competition[0].Description, m.HomeTeam.Name[0].Description, m.AwayTeam.Name[0].Description, m.CompetitionId, m.SeasonId, m.StageId, m.Id)
+		fmt.Printf("%s: %s vs %s (%s/%s/%s/%s)\n", m.CompetitionName[0].Description, m.HomeTeam.Name[0].Description, m.AwayTeam.Name[0].Description, m.CompetitionId, m.SeasonId, m.StageId, m.MatchId)
 	}
 	return nil
 }
