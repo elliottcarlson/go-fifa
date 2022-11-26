@@ -84,22 +84,31 @@ type MatchResponse struct {
 	Stadium                   StadiumResponse              `json:"Stadium"`
 	ResultType                int                          `json:"ResultType"`
 	MatchDay                  string                       `json:"MatchDay"`
+	HomeTeamScore             int                          `json:"HomeTeamScore"`
+	AwayTeamScore             int                          `json:"AwayTeamScore"`
 	HomeTeamPenaltyScore      int                          `json:"HomeTeamPenaltyScore"`
 	AwayTeamPenaltyScore      int                          `json:"AwayTeamPenaltyScore"`
 	AggregateHomeTeamScore    int                          `json:"AggregateHomeTeamScore"`
 	AggregateAwayTeamScore    int                          `json:"AggregateAwayTeamScore"`
+	LastPeriodUpdate          interface{}                  `json:"LastPeriodUpdate"`
+	Leg                       interface{}                  `json:"Leg"`
+	IsHomeMatch               bool                         `json:"IsHomeMatch"`
 	Weather                   WeatherResponse              `json:"Weather"`
 	Date                      time.Time                    `json:"Date"`
 	LocalDate                 time.Time                    `json:"LocalDate"`
+	IsTicketSalesAllowed      bool                         `json:"IsTicketSalesAllowed"`
 	MatchTime                 string                       `json:"MatchTime"`
 	SecondHalfTime            string                       `json:"SecondHalfTime"`
 	FirstHalfTime             string                       `json:"FirstHalfTime"`
 	FirstHalfExtraTime        int                          `json:"FirstHalfExtraTime"`
 	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
 	WinnerId                  string                       `json:"Winner"`
+	MatchReportUrl            string                       `json:"MatchReportUrl"`
+	PlaceHolderA              string                       `json:"PlaceHolderA"`
+	PlaceHolderB              string                       `json:"PlaceHolderB"`
 	Period                    PeriodEnum                   `json:"Period"`
-	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
-	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
+	HomeTeam                  MatchTeamResponse            `json:"Home"`
+	AwayTeam                  MatchTeamResponse            `json:"Away"`
 	BallPossession            BallPossessionResponse       `json:"BallPossession"`
 	TerritorialPossesion      string                       `json:"TerritorialPossesion"`
 	TerritorialThirdPossesion string                       `json:"TerritorialThirdPossesion"`
@@ -108,6 +117,8 @@ type MatchResponse struct {
 	GroupName                 []DefaultDescriptionResponse `json:"GroupName"`
 	StageName                 []DefaultDescriptionResponse `json:"StageName"`
 	OfficialityStatus         int                          `json:"OfficialityStatus"`
+	MatchNumber               int                          `json:"MatchNumber"`
+	MatchLegInfo              interface{}                  `json:"MatchLegInfo"`
 	TimeDefined               bool                         `json:"TimeDefined"`
 	Properties                interface{}                  `json:"Properties"`
 	IsUpdateable              bool                         `json:"IsUpdateable"`
@@ -147,9 +158,10 @@ type StadiumResponse struct {
 	IsUpdateable       bool                         `json:"IsUpdateable"`
 }
 
-// TeamResponse represents the information about a team
-type TeamResponse struct {
+// MatchTeamResponse represents the information about a team during a match
+type MatchTeamResponse struct {
 	Score         int                          `json:"Score"`
+	Confederation string                       `json:"IdConfederation"`
 	Side          string                       `json:"Side"`
 	Id            string                       `json:"IdTeam"`
 	PictureURL    string                       `json:"PictureUrl"`
@@ -167,7 +179,38 @@ type TeamResponse struct {
 	FootballType  int                          `json:"FootballType"`
 	Gender        Gender                       `json:"Gender"`
 	AssociationId string                       `json:"IdAssociation"`
-	ShortClubName string			   `json:"ShortClubName"`
+	ShortClubName string                       `json:"ShortClubName"`
+}
+
+// TeamResponse represents the structure of a team
+type TeamResponse struct {
+	Id             string                       `json:"IdTeam"`
+	Confederation  string                       `json:"IdConfederation"`
+	Type           int                          `json:"Type"`
+	AgeType        int                          `json:"AgeType"`
+	FootballType   int                          `json:"FootballType"`
+	Gender         Gender                       `json:"Gender"`
+	Name           []DefaultDescriptionResponse `json:"Name"`
+	AssociationId  string                       `json:"IdAssociation"`
+	CityId         any                          `json:"city"`
+	Headquarters   any                          `json:"Headquarters"`
+	TrainingCenter any                          `json:"TrainingCentre"`
+	OfficialSite   any                          `json:"OfficialSite"`
+	City           string                       `json:"City"`
+	CountryId      string                       `json:"IdCountry"`
+	PostalCode     string                       `json:"PostalCode"`
+	RegionName     any                          `json:"RegionName"`
+	ShortClubName  string                       `json:"ShortClubName"`
+	Abbreviation   string                       `json:"Abbreviation"`
+	Street         string                       `json:"Street"`
+	FoundationYear any                          `json:"FoundationYear"`
+	Stadium        any                          `json:"Stadium"`
+	PictureUrl     string                       `json:"PictureUrl"`
+	ThumbnailUrl   string                       `json:"ThumbnailUrl"`
+	DisplayName    []DefaultDescriptionResponse `json:"DisplayName"`
+	Content        any                          `json:"Content"`
+	Properties     Properties                   `json:"Properties"`
+	IsUpdateable   bool                         `json:"IsUpdateable"`
 }
 
 // WeatherRespones represents the information about weather
@@ -242,10 +285,10 @@ type SubstitutionResponse struct {
 
 // OfficialResponse represents the information about an offical
 type OfficialResponse struct {
-	Id            string                       `json:"OfficialsId"`
+	Id            string                       `json:"OfficialId"`
 	CountryId     string                       `json:"IdCountry"`
 	Name          []DefaultDescriptionResponse `json:"Name"`
-	ShortName     []DefaultDescriptionResponse `json:"ShortName"`
+	ShortName     []DefaultDescriptionResponse `json:"NameShort"`
 	Type          int                          `json:"OfficialType"` // TODO: Enum
 	TypeLocalized []DefaultDescriptionResponse `json:"TypeLocalized"`
 }
@@ -298,6 +341,7 @@ type PlayerResponse struct {
 	Goals                    int                          `json:"Goals"`
 	Properties               interface{}                  `json:"Properties"`
 	IsUpdateable             bool                         `json:"IsUpdateable"`
+	Picture                  interface{}                  `json:"PlayerPicture"`
 }
 
 // SeasonResponse represents the information about a season
@@ -306,7 +350,7 @@ type SeasonResponse struct {
 	Name                []DefaultDescriptionResponse `json:"name"`
 	ShortName           []DefaultDescriptionResponse `json:"ShortName"`
 	Abbreviation        string                       `json:"abbreviation"`
-	MemberAssociations  []string                     `json:"IdMemberAssocation"`
+	MemberAssociations  []string                     `json:"IdMemberAssociation"`
 	Confederations      []string                     `json:"IdConfederation"`
 	CompetitionId       string                       `json:"IdCompetition"`
 	StartDate           time.Time                    `json:"StartDate"`
@@ -316,14 +360,8 @@ type SeasonResponse struct {
 	MatchBallPictureURL string                       `json:"MatchBallPictureUrl"`
 	HostTeams           interface{}                  `json:"HostTeams"`
 	SportType           int                          `json:"SportType"`
-	Properties          SeasonProperties             `json:"Properties"`
+	Properties          Properties                   `json:"Properties"`
 	IsUpdateable        bool                         `json:"IsUpdateable"`
-}
-
-// SeasonProperties represents the properties of a season
-type SeasonProperties struct {
-	InfostradaId string `json:"IdInfostrada"`
-	Providers    string `json:"Providers"`
 }
 
 // StandingsMatchResult represents the information about standings
@@ -333,11 +371,6 @@ type StandingsMatchResult struct {
 	Result    int       `json:"Result"`
 	GroupId   string    `json:"IdGroup"`
 	StageId   string    `json:"IdStage"`
-}
-
-// StandingsProperties represents the properties of standings
-type StandingsProperties struct {
-	InfostradaId string `json:"IdInfostrada"`
 }
 
 // StandingResponse represents the API response about standings
@@ -386,7 +419,7 @@ type StandingsResult struct {
 	WinByExtraTime      int                    `json:"WinByExtraTime"`
 	WinByPenalty        int                    `json:"WinByPenalty"`
 	MatchResults        []StandingsMatchResult `json:"MatchResults"`
-	Properties          StandingsProperties    `json:"Properties"`
+	Properties          Properties             `json:"Properties"`
 	IsUpdateable        bool                   `json:"IsUpdateable"`
 }
 
@@ -418,8 +451,8 @@ type MatchDataResponse struct {
 	SecondHalfExtraTime       int                          `json:"SecondHalfExtraTime"`
 	Winner                    interface{}                  `json:"Winner"`
 	Period                    int                          `json:"Period"`
-	HomeTeam                  TeamResponse                 `json:"HomeTeam"`
-	AwayTeam                  TeamResponse                 `json:"AwayTeam"`
+	HomeTeam                  MatchTeamResponse            `json:"HomeTeam"`
+	AwayTeam                  MatchTeamResponse            `json:"AwayTeam"`
 	BallPossession            BallPossessionResponse       `json:"BallPossession"`
 	TerritorialPossesion      interface{}                  `json:"TerritorialPossesion"`
 	TerritorialThirdPossesion interface{}                  `json:"TerritorialThirdPossesion"`
@@ -498,4 +531,11 @@ type EventResponse struct {
 type GetCompetitionsResponse struct {
 	PaginatedResponse
 	Results []CompetitionResponse `json:"Results"`
+}
+
+type Properties struct {
+	IdIFES             string `json:"IdIFES,omitempty"`
+	StatsPerformIfesId string `json:"StatsPerformIfesId,omitempty"`
+	IdStatsPerform     string `json:"IdStatsPerform,omitempty"`
+	Providers          string `json:"Providers,omitempty"`
 }

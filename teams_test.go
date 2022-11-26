@@ -4,8 +4,41 @@ import (
 	"testing"
 
 	fifa "github.com/ImDevinC/go-fifa"
+	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/assert"
 )
+
+var expectedTeam = fifa.TeamResponse{
+	Id:            "43921",
+	Confederation: "CONCACAF",
+	Type:          1,
+	AgeType:       7,
+	FootballType:  0,
+	Gender:        fifa.MaleGender,
+	Name: []fifa.DefaultDescriptionResponse{{
+		Locale:      "en-GB",
+		Description: "United States",
+	}},
+	AssociationId: "USA",
+	City:          "CHICAGO",
+	PostalCode:    "IL 60616",
+	ShortClubName: "USA",
+	CountryId:     "USA",
+	Abbreviation:  "USA",
+	Street:        "US Soccer Federation, US Soccer House, 1801 S. Prairie Avenue",
+	PictureUrl:    "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/USA",
+	DisplayName: []fifa.DefaultDescriptionResponse{{
+		Locale:      "en-GB",
+		Description: "USA",
+	}},
+	Content: []any{},
+	Properties: fifa.Properties{
+		IdIFES:             "43921",
+		StatsPerformIfesId: "43921",
+		IdStatsPerform:     "9vh2u1p4ppm597tjfahst2m3n",
+	},
+	IsUpdateable: false,
+}
 
 func TestGetTeam(t *testing.T) {
 	t.Parallel()
@@ -16,7 +49,8 @@ func TestGetTeam(t *testing.T) {
 	if ok := assert.Nil(t, err, "expected no error with GetTeam, got: %s", err); !ok {
 		t.FailNow()
 	}
-	if resp.CountryId != "USA" {
-		t.Errorf("expected countryId USA but got %s", resp.CountryId)
+	diff := cmp.Diff(expectedTeam, *resp)
+	if ok := assert.Equal(t, diff, "", diff); !ok {
+		t.Fail()
 	}
 }
