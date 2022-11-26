@@ -12,6 +12,8 @@ type GetMatchesOptions struct {
 	TeamId        string    `url:"IdTeam,omitempty"`
 	SeasonId      string    `url:"IdSeason,omitempty"`
 	CompetitionId string    `url:"IdCompetition,omitempty"`
+	MatchId       string    `url:"IdMatch,omitempty"`
+	StageId       string    `url:"IdSeason,omitempty"`
 }
 
 // GetCurrentMatches returns the list of active matches
