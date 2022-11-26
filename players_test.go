@@ -11,7 +11,7 @@ func TestGetPlayer(t *testing.T) {
 	t.Parallel()
 	client := fifa.Client{}
 	resp, err := client.GetPlayer(&fifa.GetPlayerOptions{
-		PlayerId: "200704206",
+		PlayerId: "373400",
 	})
 	if ok := assert.Nil(t, err, "expected no error with GetTeam, got: %s", err); !ok {
 		t.FailNow()
@@ -19,7 +19,7 @@ func TestGetPlayer(t *testing.T) {
 	if ok := assert.NotEmpty(t, resp.Name, "no names available"); !ok {
 		t.FailNow()
 	}
-	if ok := assert.Equal(t, "Edgar HERNÁNDEZ", resp.Name[0].Description, "got unexpected value"); !ok {
+	if ok := assert.Equal(t, "Enner VALENCIA", resp.Name[0].Description, "got unexpected value"); !ok {
 		t.FailNow()
 	}
 }

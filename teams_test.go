@@ -10,10 +10,13 @@ import (
 func TestGetTeam(t *testing.T) {
 	t.Parallel()
 	client := fifa.Client{}
-	_, err := client.GetTeam(&fifa.GetTeamOptions{
-		TeamId: "1884381",
+	resp, err := client.GetTeam(&fifa.GetTeamOptions{
+		TeamId: "43921",
 	})
 	if ok := assert.Nil(t, err, "expected no error with GetTeam, got: %s", err); !ok {
 		t.FailNow()
+	}
+	if resp.CountryId != "USA" {
+		t.Errorf("expected countryId USA but got %s", resp.CountryId)
 	}
 }

@@ -3,7 +3,7 @@ package go_fifa
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/google/go-querystring/query"
@@ -81,7 +81,7 @@ func (c *Client) doRequest(req *http.Request, resp interface{}) error {
 		return fmt.Errorf("failed to execute API request: %s", err.Error())
 	}
 	defer response.Body.Close()
-	bodyBytes, err := ioutil.ReadAll(response.Body)
+	bodyBytes, err := io.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}
