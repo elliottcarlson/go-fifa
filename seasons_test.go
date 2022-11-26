@@ -10,10 +10,13 @@ import (
 func TestGetSeason(t *testing.T) {
 	t.Parallel()
 	client := fifa.Client{}
-	_, err := client.GetSeason(&fifa.GetSeasonOptions{
-		SeasonId: "400198457",
+	resp, err := client.GetSeason(&fifa.GetSeasonOptions{
+		SeasonId: "255711",
 	})
 	if ok := assert.Nil(t, err, "expected no error with GetSeason, got: %s", err); !ok {
 		t.FailNow()
+	}
+	if ok := assert.Equal(t, resp.Abbreviation, "FWC 2022"); !ok {
+		t.Fail()
 	}
 }

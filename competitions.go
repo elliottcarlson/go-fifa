@@ -5,15 +5,12 @@ import (
 	"fmt"
 )
 
-type GetCompetitionsResponse struct {
-	PaginatedResponse
-	Results []CompetitionResponse `json:"Results"`
-}
-
+// GetCompetitionsResponse represents the input used when looking up a competition
 type GetCompetitionsOptions struct {
 	CompetitionId string
 }
 
+// GetCompetitions returns the list of competitions
 func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
 	var respData GetCompetitionsResponse
 	url := "/competitions"
@@ -24,6 +21,7 @@ func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
 	return respData.Results, nil
 }
 
+// GetCompetition returns the information about a competition
 func (c *Client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
 	if options.CompetitionId == "" {
 		return nil, errors.New("competitionId is required but was not provIded")

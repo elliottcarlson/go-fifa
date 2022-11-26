@@ -1,71 +1,77 @@
 package go_fifa
 
-import "time"
+import (
+	"time"
 
-type Gender int
-
-const (
-	MALE   Gender = 1
-	FEMALE Gender = 2
+	"github.com/google/uuid"
 )
 
-type PeriodEnum int
+type Gender int // Represents the gender of the player
 
 const (
-	FIRST        PeriodEnum = 3
-	SECOND       PeriodEnum = 5
-	FIRST_EXTRA  PeriodEnum = 7
-	SECOND_EXTRA PeriodEnum = 9
-	SHOOTOUT     PeriodEnum = 11
+	MaleGender   Gender = 1
+	FemaleGender Gender = 2
 )
 
-type MatchEvent int
+type PeriodEnum int // Represents the period of play
 
 const (
-	GoalScore        MatchEvent = 0
-	Assist           MatchEvent = 1
-	YellowCard       MatchEvent = 2
-	RedCard          MatchEvent = 3
-	DoubleYellow     MatchEvent = 4
-	Substitution     MatchEvent = 5
-	PenaltyAwarded   MatchEvent = 6
-	MatchStart       MatchEvent = 7
-	HalfEnd          MatchEvent = 8
-	MatchPaused      MatchEvent = 9
-	MatchResumed     MatchEvent = 10
-	GoalAttempt      MatchEvent = 12
-	FoulUnknown      MatchEvent = 14
-	Offside          MatchEvent = 15
-	CornerKick       MatchEvent = 16
-	ShotBlocked      MatchEvent = 17
-	Foul             MatchEvent = 18
-	CoinToss         MatchEvent = 19
-	Unknown3         MatchEvent = 20
-	DroppedBall      MatchEvent = 23
-	ThrowIn          MatchEvent = 24
-	Clearance        MatchEvent = 25
-	MatchEnd         MatchEvent = 26
-	Unknown2         MatchEvent = 27
-	Crossbar         MatchEvent = 32
-	Crossbar2        MatchEvent = 33
-	OwnGoal          MatchEvent = 34
-	HandBall         MatchEvent = 37
-	FreeKickGoal     MatchEvent = 39
-	PenaltyGoal      MatchEvent = 41
-	FreeKickCrossbar MatchEvent = 44
-	FreeKickPost     MatchEvent = 49
-	PenaltyMissed    MatchEvent = 60
-	PenaltyMissed2   MatchEvent = 65
-	GoalieSaved      MatchEvent = 57
-	VARPenalty       MatchEvent = 72
-	Unknown          MatchEvent = 9999
+	FirstPeriod       PeriodEnum = 3
+	SecondPeriod      PeriodEnum = 5
+	FirstExtraPeriod  PeriodEnum = 7
+	SecondExtraPeriod PeriodEnum = 9
+	ShootoutPeriod    PeriodEnum = 11
 )
 
+type MatchEvent int // Represents the type of event that occured
+
+const (
+	GoalScore        MatchEvent = 0    // A player scored a goal
+	Assist           MatchEvent = 1    // A player assisted a goal
+	YellowCard       MatchEvent = 2    // A player was given a yellow card
+	RedCard          MatchEvent = 3    // A player was given a red card
+	DoubleYellow     MatchEvent = 4    // A player was given a second yellow card
+	Substitution     MatchEvent = 5    // A player was substituded out
+	PenaltyAwarded   MatchEvent = 6    // A penalty was awarded
+	MatchStart       MatchEvent = 7    // The match has started
+	HalfEnd          MatchEvent = 8    // The half is over
+	MatchPaused      MatchEvent = 9    // The referee paused the match
+	MatchResumed     MatchEvent = 10   // The match has resumed
+	GoalAttempt      MatchEvent = 12   // A player made an attempt on goal
+	FoulUnknown      MatchEvent = 14   // Unknown event type
+	Offside          MatchEvent = 15   // A player was deemed offside
+	CornerKick       MatchEvent = 16   // Referee awarded a corner kick
+	ShotBlocked      MatchEvent = 17   // The goalie blocked a shot
+	Foul             MatchEvent = 18   // A player commited a foul
+	CoinToss         MatchEvent = 19   // The coin toss happened
+	Unknown3         MatchEvent = 20   // Unknown event type
+	DroppedBall      MatchEvent = 23   // The referee called a drop ball
+	ThrowIn          MatchEvent = 24   // A player took a throw-in
+	Clearance        MatchEvent = 25   // A player cleared the ball
+	MatchEnd         MatchEvent = 26   // The match is over
+	Unknown2         MatchEvent = 27   // Unknown event type
+	HitCrossbar      MatchEvent = 32   // The player hit the crossbar
+	HitPost          MatchEvent = 33   // The player hit the post
+	OwnGoal          MatchEvent = 34   // A player scored against their own team
+	HandBall         MatchEvent = 37   // The referee called a handball
+	FreeKickGoal     MatchEvent = 39   // A player scored a goal from a free-kick
+	PenaltyGoal      MatchEvent = 41   // A player scored a goal from a penalty
+	FreeKickCrossbar MatchEvent = 44   // A player hit the crossbar from a free-kick
+	FreeKickPost     MatchEvent = 49   // A player hit the post from a free-kick
+	PenaltyMissed    MatchEvent = 60   // A player missed their penalty
+	PenaltyMissed2   MatchEvent = 65   // A player missed their penalty??
+	GoalieSaved      MatchEvent = 57   // The goalie stopped the shot
+	VARPenalty       MatchEvent = 72   // A penalty was awarded after VAR
+	Pending          MatchEvent = 9999 // This event is still pending a final event type, query again for the new event
+)
+
+// PagindatedResponse represents the options for pagination results from the API
 type PaginatedResponse struct {
 	ContinuationToken string `json:"ContinuationToken"`
 	ContinuationHash  string `json:"ContinuationHash"`
 }
 
+// MatchResponse represents the response from calling an API to get match data
 type MatchResponse struct {
 	Id                        string                       `json:"IdMatch"`
 	StageId                   string                       `json:"IdStage"`
@@ -107,11 +113,14 @@ type MatchResponse struct {
 	IsUpdateable              bool                         `json:"IsUpdateable"`
 }
 
+// DefaultDescriptionResponse represents a common usage for specifying
+// locale information for different nested structures
 type DefaultDescriptionResponse struct {
 	Locale      string `json:"Locale"`
 	Description string `json:"Description"`
 }
 
+// StadiumResponse represents the information about a stadium
 type StadiumResponse struct {
 	Id                 string                       `json:"IdStadium"`
 	Name               []DefaultDescriptionResponse `json:"Name"`
@@ -138,6 +147,7 @@ type StadiumResponse struct {
 	IsUpdateable       bool                         `json:"IsUpdateable"`
 }
 
+// TeamResponse represents the information about a team
 type TeamResponse struct {
 	Score         int                          `json:"Score"`
 	Side          string                       `json:"Side"`
@@ -159,6 +169,7 @@ type TeamResponse struct {
 	AssociationId string                       `json:"IdAssociation"`
 }
 
+// WeatherRespones represents the information about weather
 type WeatherResponse struct {
 	Humidity      string                       `json:"Humidity"`
 	Temperature   string                       `json:"Temperature"`
@@ -167,6 +178,7 @@ type WeatherResponse struct {
 	TypeLocalized []DefaultDescriptionResponse `json:"TypeLocalized"`
 }
 
+// BallPossessionResponse represents the information about ball possession
 type BallPossessionResponse struct {
 	Intervals   []interface{} `json:"Intervals"`
 	LastX       []interface{} `json:"LastX"`
@@ -174,6 +186,7 @@ type BallPossessionResponse struct {
 	OverallAway float32       `json:"OverallAway"`
 }
 
+// MatchPlayerResponse represents the information about a player
 type MatchPlayerResponse struct {
 	Id            string                       `json:"IdPlayer"`
 	TeamId        string                       `json:"IdTeam"`
@@ -189,6 +202,7 @@ type MatchPlayerResponse struct {
 	LineupY       *float64                     `json:"LineupY"`     // TODO: Evaluate
 }
 
+// CoachResponse represents the information about a coach
 type CoachResponse struct {
 	Id            string                       `json:"IdCoach"`
 	CountryId     string                       `json:"IdCountry"`
@@ -198,6 +212,7 @@ type CoachResponse struct {
 	SpecialStatus string                       `json:"SpecialStatus"`
 }
 
+// BookingResponse represents the information about a booking
 type BookingResponse struct {
 	Card        int        `json:"Card"`
 	Period      PeriodEnum `json:"Period"`
@@ -210,6 +225,7 @@ type BookingResponse struct {
 	Reason      string     `json:"Reason"`
 }
 
+// SubstitutionResponse represents the information about a substitution
 type SubstitutionResponse struct {
 	EventId       string                       `json:"IdEvent"`
 	Period        PeriodEnum                   `json:"Period"`
@@ -223,6 +239,7 @@ type SubstitutionResponse struct {
 	TeamId        string                       `json:"TeamId"`
 }
 
+// OfficialResponse represents the information about an offical
 type OfficialResponse struct {
 	Id            string                       `json:"OfficialsId"`
 	CountryId     string                       `json:"IdCountry"`
@@ -232,6 +249,7 @@ type OfficialResponse struct {
 	TypeLocalized []DefaultDescriptionResponse `json:"TypeLocalized"`
 }
 
+// GoalResponse represents the information about a goal
 type GoalResponse struct {
 	Id             string     `json:"IdGoal"`
 	TeamId         string     `json:"IdTeam"`
@@ -242,6 +260,7 @@ type GoalResponse struct {
 	Period         PeriodEnum `json:"Period"`
 }
 
+// CompetitionResponse represents the information about a competition
 type CompetitionResponse struct {
 	CompetitionId       string                       `json:"IdCompetition"`
 	Name                []DefaultDescriptionResponse `json:"Name"`
@@ -256,6 +275,7 @@ type CompetitionResponse struct {
 	IsUpdateable        bool                         `json:"IsUpdateable"`
 }
 
+// PlayerResponse represents the information about a player
 type PlayerResponse struct {
 	Id                       string                       `json:"IdPlayer"`
 	Name                     []DefaultDescriptionResponse `json:"Name"`
@@ -279,6 +299,7 @@ type PlayerResponse struct {
 	IsUpdateable             bool                         `json:"IsUpdateable"`
 }
 
+// SeasonResponse represents the information about a season
 type SeasonResponse struct {
 	Id                  string                       `json:"IdSeason"`
 	Name                []DefaultDescriptionResponse `json:"name"`
@@ -298,11 +319,13 @@ type SeasonResponse struct {
 	IsUpdateable        bool                         `json:"IsUpdateable"`
 }
 
+// SeasonProperties represents the properties of a season
 type SeasonProperties struct {
 	InfostradaId string `json:"IdInfostrada"`
-	Providers    string `json:"ProvIders"`
+	Providers    string `json:"Providers"`
 }
 
+// StandingsMatchResult represents the information about standings
 type StandingsMatchResult struct {
 	MatchId   string    `json:"IdMatch"`
 	StartTime time.Time `json:"StartTime"`
@@ -311,14 +334,17 @@ type StandingsMatchResult struct {
 	StageId   string    `json:"IdStage"`
 }
 
+// StandingsProperties represents the properties of standings
 type StandingsProperties struct {
 	InfostradaId string `json:"IdInfostrada"`
 }
 
+// StandingResponse represents the API response about standings
 type StandingResponse struct {
 	Results []StandingsResult `json:"Results"`
 }
 
+// StandingsSesult represents the information about standings
 type StandingsResult struct {
 	MatchDay            int                    `json:"MatchDay"`
 	CompetitionId       string                 `json:"IdCompetition"`
@@ -363,6 +389,7 @@ type StandingsResult struct {
 	IsUpdateable        bool                   `json:"IsUpdateable"`
 }
 
+// MatchDataResponse represents the response about match events from the API
 type MatchDataResponse struct {
 	MatchId                   string                       `json:"IdMatch"`
 	StageId                   string                       `json:"IdStage"`
@@ -405,13 +432,69 @@ type MatchDataResponse struct {
 	IsUpdateable              interface{}                  `json:"IsUpdateable"`
 }
 
+// StatsResponse represents the stats response from the API
 type StatsResponse struct {
 	StatsPerformId string `json:"IdStatsPerform"`
 }
 
+// VarNotificationDataResponse struct represents information about VAR
 type VarNotificationDataResponse struct {
 	Incident int `json:"Incident"`
 	Reason   int `json:"Reason"`
 	Status   int `json:"Status"`
 	Result   int `json:"Result"`
+}
+
+// CurrentMatchesResponse represents the response from getting current matches
+type CurrentMatchesResponse struct {
+	PaginatedResponse
+	Results []MatchResponse `json:"Results"`
+}
+
+// GetMatchEventsResponse represents the response returned when querying event data
+type GetMatchEventsResponse struct {
+	StageId       string          `json:"IdStage"`
+	MatchId       string          `json:"IdMatch"`
+	CompetitionId string          `json:"IdCompetition"`
+	SeasonId      string          `json:"IdSeason"`
+	GroupId       string          `json:"IdGroup"`
+	Events        []EventResponse `json:"Event"`
+	Properties    interface{}     `json:"Properties"`
+	IsUpdateable  bool            `json:"IsUpdateable"`
+}
+
+// EventResponse represents the structure of an event that happened during a match
+type EventResponse struct {
+	Context             string                       `json:"Context"`
+	Id                  string                       `json:"EventId"`
+	GuId                uuid.UUID                    `json:"GuId"`
+	TeamId              string                       `json:"IdTeam"`
+	PlayerId            string                       `json:"IdPlayer"`
+	SubPlayerId         string                       `json:"IdSubPlayer"`
+	PersonId            string                       `json:"IdPerson"`
+	SubTeamId           string                       `json:"IdSubTeam"`
+	Timestamp           time.Time                    `json:"Timestamp"`
+	DateTimeUTC         time.Time                    `json:"DateTimeUTC"`
+	MatchMinute         string                       `json:"MatchMinute"`
+	Period              PeriodEnum                   `json:"Period"`
+	HomeGoals           int                          `json:"HomeGoals"`
+	AwayGoals           int                          `json:"AwayGoals"`
+	Type                MatchEvent                   `json:"Type"`
+	TypeLocalized       []DefaultDescriptionResponse `json:"TypeLocalized"`
+	PositionX           float32                      `json:"PositionX"`
+	PositionY           float32                      `json:"PositionY"`
+	GoalGatePositionX   float32                      `json:"GoalGatePositionX"`
+	GoalGatePositionY   float32                      `json:"GoalGatePositionY"`
+	GoalGatePositionZ   float32                      `json:"GoalGatePositionZ"`
+	VarDetail           string                       `json:"VarDetail"`
+	VarNotificationData VarNotificationDataResponse  `json:"VarNotificationData"`
+	HomePenaltyGoals    int                          `json:"HomePenaltyGoals"`
+	AwayPenaltyGoals    int                          `json:"AwayPenaltyGoals"`
+	EventDescription    []DefaultDescriptionResponse `json:"EventDescription"`
+}
+
+// GetCompetitionsResponse represents the object returned when querying a competition
+type GetCompetitionsResponse struct {
+	PaginatedResponse
+	Results []CompetitionResponse `json:"Results"`
 }
