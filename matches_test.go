@@ -122,6 +122,7 @@ var expectedMatch = fifa.MatchResponse{
 		IsUpdateable: false,
 	},
 	MatchTime:           "0'",
+	MatchDay:            "1",
 	SecondHalfTime:      "",
 	FirstHalfTime:       "",
 	FirstHalfExtraTime:  0,

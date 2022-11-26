@@ -71,6 +71,11 @@ type PaginatedResponse struct {
 	ContinuationHash  string `json:"ContinuationHash"`
 }
 
+type GetMatchesResponse struct {
+	PaginatedResponse
+	Results []MatchResponse
+}
+
 // MatchResponse represents the response from calling an API to get match data
 type MatchResponse struct {
 	Id                        string                       `json:"IdMatch"`
@@ -482,7 +487,7 @@ type VarNotificationDataResponse struct {
 // CurrentMatchesResponse represents the response from getting current matches
 type CurrentMatchesResponse struct {
 	PaginatedResponse
-	Results []MatchResponse `json:"Results"`
+	Results []MatchDataResponse `json:"Results"`
 }
 
 // GetMatchEventsResponse represents the response returned when querying event data
