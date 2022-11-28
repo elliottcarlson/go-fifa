@@ -532,3 +532,19 @@ func TestGetMatches(t *testing.T) {
 		t.Fail()
 	}
 }
+
+// This tests against a real match to make sure our marshalling is correct
+func TestLiveMatch(t *testing.T) {
+	t.Parallel()
+	client := fifa.Client{}
+	_, err := client.GetMatches(&fifa.GetMatchesOptions{
+		CompetitionId: "17",
+		SeasonId:      "255711",
+		StageId:       "285063",
+		From:          time.Date(2022, 11, 28, 0, 0, 0, 0, time.UTC),
+		To:            time.Date(2022, 11, 29, 0, 0, 0, 0, time.UTC),
+	})
+	if ok := assert.Nil(t, err, "expected no error, got: %s", err); !ok {
+		t.FailNow()
+	}
+}
