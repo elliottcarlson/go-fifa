@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - testdata/**
+      - cmd/**
+      - LICENSE.txt
+      - README.md
+
   workflow_dispatch:
 
 jobs:
