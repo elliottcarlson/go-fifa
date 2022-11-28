@@ -2,23 +2,25 @@ package go_fifa
 
 import "time"
 
-type Gender int // Represents the gender of the player
+// Represents the gender of the player
+type Gender int
 
 const (
-	MaleGender   Gender = 1
-	FemaleGender Gender = 2
+	MaleGender   Gender = 1 // Male
+	FemaleGender Gender = 2 // Female
 )
 
-type Period int // Represents the period of play
+// Represents the period of play
+type Period int
 
 const (
-	NotStarted        Period = 0
-	FirstPeriod       Period = 3
-	SecondPeriod      Period = 5
-	FirstExtraPeriod  Period = 7
-	SecondExtraPeriod Period = 9
-	MatchOver         Period = 10
-	ShootoutPeriod    Period = 11
+	NotStarted        Period = 0  // The first period hasn't started yet
+	FirstPeriod       Period = 3  // First period
+	SecondPeriod      Period = 5  // Second period
+	FirstExtraPeriod  Period = 7  // First extra period
+	SecondExtraPeriod Period = 9  // Second extra period
+	MatchOver         Period = 10 // The match is over
+	ShootoutPeriod    Period = 11 // Shootout
 )
 
 type MatchEvent int // Represents the type of event that occured
@@ -61,6 +63,28 @@ const (
 	GoalieSaved      MatchEvent = 57   // The goalie stopped the shot
 	VARPenalty       MatchEvent = 72   // A penalty was awarded after VAR
 	Pending          MatchEvent = 9999 // This event is still pending a final event type, query again for the new event
+)
+
+type OfficialType int
+
+const (
+	Referee                 OfficialType = 1
+	AssistantReferee1       OfficialType = 2
+	AssistantReferee2       OfficialType = 3
+	FourthOfficial          OfficialType = 4
+	VideoAssistantReferee   OfficialType = 5
+	ReserveReferee          OfficialType = 6
+	OffsideVAR              OfficialType = 7
+	AssistantVAR            OfficialType = 8
+	SupportVAR              OfficialType = 9
+	ReserveAssistantReferee OfficialType = 10
+)
+
+type CoachRole int
+
+const (
+	ManagerRole      CoachRole = 0
+	AssistantManager CoachRole = 1
 )
 
 type PaginationResponse struct {
@@ -185,11 +209,13 @@ type PlayerResponse struct {
 	IsUpdateable             bool                `json:"IsUpdateable"`
 }
 
+// LiveResponse represents the structure of a response from the "now" api
 type LiveResponse struct {
 	PaginationResponse
 	Results []LiveMatch `json:"Results"`
 }
 
+// LiveMatch represents the structure of a live match from the "now" api
 type LiveMatch struct {
 	MatchId                   string              `json:"IdMatch"`
 	StageId                   string              `json:"IdStage"`
@@ -224,7 +250,7 @@ type LiveMatch struct {
 	TerritorialThirdPossesion any                 `json:"TerritorialThirdPossesion"`
 	Officials                 []Official          `json:"Officials"`
 	MatchStatus               int                 `json:"MatchStatus"` // TODO: Enum
-	GroupName                 any                 `json:"GroupName"`
+	GroupName                 []LocaleDescription `json:"GroupName"`
 	StageName                 []LocaleDescription `json:"StageName"`
 	OfficialityStatus         int                 `json:"OfficialityStatus"` // TODO: Enum
 	TimeDefined               bool                `json:"TimeDefined"`
@@ -298,7 +324,7 @@ type TeamCoach struct {
 	PictureUrl    string              `json:"PictureUrl"`
 	Name          []LocaleDescription `json:"Name"`
 	Alias         []LocaleDescription `json:"Alias"`
-	Role          int                 `json:"Role"` // TODO: Enum
+	Role          CoachRole           `json:"Role"`
 	SpecialStatus any                 `json:"SpecialStatus"`
 }
 
@@ -307,16 +333,22 @@ type TeamPlayer struct {
 	Id            string              `json:"IdPlayer"`
 	TeamId        string              `json:"IdTeam"`
 	ShirtNumber   int                 `json:"ShirtNumber"`
-	Status        int                 `json:"Status"` // TODO: Enum
-	SpecialStatus any                 `json:"SpecialStatus"`
+	Status        int                 `json:"Status"`        // TODO: Enum
+	SpecialStatus int                 `json:"SpecialStatus"` // TODO: Enum
 	Captain       bool                `json:"Captain"`
 	Name          []LocaleDescription `json:"PlayerName"`
 	ShortName     []LocaleDescription `json:"ShortName"`
 	Position      int                 `json:"Position"` // TODO: Enum
-	PlayerPicture any                 `json:"PlayerPicture"`
+	PlayerPicture TeamPlayerPicture   `json:"PlayerPicture"`
 	FieldStatus   int                 `json:"FieldStatus"` // TODO: Enum
-	LineupX       any                 `json:"LineupX"`
-	LineupY       any                 `json:"LineupY"`
+	LineupX       int                 `json:"LineupX"`
+	LineupY       int                 `json:"LineupY"`
+}
+
+// TeamPlayerPicture represents a picture object from the "now" API
+type TeamPlayerPicture struct {
+	Id         string `json:"Id"`
+	PictureUrl string `json:"PictureUrl"`
 }
 
 // Booking represents the structure of a booking
@@ -371,7 +403,7 @@ type Official struct {
 	CountryId     string              `json:"IdCountry"`
 	Name          []LocaleDescription `json:"Name"`
 	ShortName     []LocaleDescription `json:"NameShort"`
-	Type          int                 `json:"OfficialType"` // TODO: Enum
+	Type          OfficialType        `json:"OfficialType"`
 	TypeLocalized []LocaleDescription `json:"TypeLocalized"`
 }
 
@@ -414,8 +446,8 @@ type MatchData struct {
 	MatchTime              string              `json:"MatchTime"`
 	SecondHalfTime         any                 `json:"SecondHalfTime"`
 	FirstHalfTime          any                 `json:"FirstHalfTime"`
-	FirstHalfExtraTime     any                 `json:"FirstHalfExtraTime"`
-	SecondHalfExtraTime    any                 `json:"SecondHalfExtraTime"`
+	FirstHalfExtraTime     int                 `json:"FirstHalfExtraTime"`
+	SecondHalfExtraTime    int                 `json:"SecondHalfExtraTime"`
 	Winner                 string              `json:"Winner"`
 	MatchReportUrl         any                 `json:"MatchReportUrl"`
 	PlaceholderA           string              `json:"PlaceHolderA"`
@@ -427,7 +459,7 @@ type MatchData struct {
 	MatchNumber            int                 `json:"MatchNumber"`
 	TimeDefined            bool                `json:"TimeDefined"`
 	OfficialityStatus      int                 `json:"OfficialityStatus"` // TODO: Enum
-	WatchLegInfo           any                 `json:"WatchLegInfo"`
+	MatchLegInfo           any                 `json:"MatchLegInfo"`
 	Properties             Properties          `json:"Properties"`
 	IsUpdateable           bool                `json:"IsUpdateable"`
 }
