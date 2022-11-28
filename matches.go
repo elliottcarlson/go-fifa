@@ -17,8 +17,8 @@ type GetMatchesOptions struct {
 }
 
 // GetCurrentMatches returns the list of active matches
-func (c *Client) GetCurrentMatches() ([]MatchDataResponse, error) {
-	var respData CurrentMatchesResponse
+func (c *Client) GetCurrentMatches() ([]LiveMatch, error) {
+	var respData LiveResponse
 	_, err := c.get("/live/football/now", &respData, nil)
 	if err != nil {
 		return nil, err
@@ -27,8 +27,8 @@ func (c *Client) GetCurrentMatches() ([]MatchDataResponse, error) {
 }
 
 // GetMatches returns the information about queried matches
-func (c *Client) GetMatches(opts *GetMatchesOptions) ([]MatchResponse, error) {
-	var respData GetMatchesResponse
+func (c *Client) GetMatches(opts *GetMatchesOptions) ([]MatchData, error) {
+	var respData MatchesResponse
 	if opts.Count == 0 {
 		opts.Count = 500
 	}

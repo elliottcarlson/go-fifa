@@ -11,40 +11,40 @@ import (
 
 var expectedPlayer = fifa.PlayerResponse{
 	Id: "229397",
-	Name: []fifa.DefaultDescriptionResponse{{
+	Name: []fifa.LocaleDescription{{
 		Locale:      "en-GB",
 		Description: "Lionel MESSI",
 	}},
-	Alias: []fifa.DefaultDescriptionResponse{{
+	Alias: []fifa.LocaleDescription{{
 		Locale:      "en-GB",
 		Description: "MESSI",
 	}},
-	Birthdate:                time.Date(1987, 6, 24, 0, 0, 0, 0, time.UTC),
+	BirthDate:                time.Date(1987, 6, 24, 0, 0, 0, 0, time.UTC),
 	Weight:                   72,
 	Height:                   170,
 	Birthplace:               "Rosario",
 	CountryId:                "ARG",
-	InternationalCaps:        166,
-	InternationalDebut:       0,
-	TopCompetitionDebut:      0,
-	PictureURL:               "",
-	ThumbnailURL:             "",
-	TwitterAccount:           "",
-	PreferredFoot:            "",
-	MediaContent:             []string{},
+	InternationalCaps:        167,
+	InternationalDebut:       nil,
+	TopCompetitionDebut:      nil,
+	TwitterAccount:           nil,
+	PreferredFoot:            nil,
+	MediaContent:             []any{},
 	LocalizedTwitterAccounts: nil,
-	Goals:                    92,
-	Properties: map[string]any{
-		"StatsPerformIfesId": "229397",
-		"IdStatsPerform":     "c5ryhn04g9goikd0blmh83aol",
-		"IdIFES":             "229397",
+	Goals:                    93,
+	Properties: fifa.Properties{
+		StatsPerformIfesId: "229397",
+		IdStatsPerform:     "c5ryhn04g9goikd0blmh83aol",
+		IdIFES:             "229397",
 	},
 	IsUpdateable: false,
 }
 
 func TestGetPlayer(t *testing.T) {
 	t.Parallel()
-	client := fifa.Client{}
+	client := fifa.Client{
+		Client: &TestClient{},
+	}
 	resp, err := client.GetPlayer(&fifa.GetPlayerOptions{
 		PlayerId: "229397",
 	})

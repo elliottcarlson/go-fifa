@@ -18,7 +18,7 @@ func showCompetitions(client *fifa.Client) error {
 		return err
 	}
 	for _, c := range comps {
-		log.Printf("Id: %s", c.CompetitionId)
+		log.Printf("Id: %s", c.Id)
 		log.Printf("Name: %s", c.Name[0].Description)
 	}
 	return nil
@@ -30,7 +30,7 @@ func getCompetitionsByName(client *fifa.Client, input string) error {
 		return err
 	}
 	input = strings.ToLower(input)
-	var results []fifa.CompetitionResponse
+	var results []fifa.Competition
 	for _, c := range comps {
 		name := strings.ToLower(c.Name[0].Description)
 		if strings.Contains(name, input) {

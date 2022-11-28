@@ -1,0 +1,103 @@
+{
+    "IdStage": "285063",
+    "IdMatch": "400128082",
+    "IdCompetition": "17",
+    "IdSeason": "255711",
+    "IdGroup": "285065",
+    "Event": [
+        {
+            "EventId": "18185300000030",
+            "IdTeam": "43834",
+            "Timestamp": "2022-11-20T16:01:30.0Z",
+            "MatchMinute": "1'",
+            "Period": 0,
+            "HomeGoals": 0,
+            "AwayGoals": 0,
+            "Type": 19,
+            "Qualifiers": [],
+            "TypeLocalized": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "Coin Toss"
+                }
+            ],
+            "HomePenaltyGoals": 0,
+            "AwayPenaltyGoals": 0,
+            "EventDescription": []
+        },
+        {
+            "EventId": "18185300000031",
+            "Timestamp": "2022-11-20T16:02:13.0Z",
+            "MatchMinute": "1'",
+            "Period": 3,
+            "HomeGoals": 0,
+            "AwayGoals": 0,
+            "Type": 7,
+            "Qualifiers": [],
+            "TypeLocalized": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "Start Time"
+                }
+            ],
+            "HomePenaltyGoals": 0,
+            "AwayPenaltyGoals": 0,
+            "EventDescription": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "The referee signals the start of the first period."
+                }
+            ]
+        },
+        {
+            "EventId": "18185300001525",
+            "Timestamp": "2022-11-20T17:59:31.0Z",
+            "MatchMinute": "90'+6'",
+            "Period": 5,
+            "HomeGoals": 0,
+            "AwayGoals": 2,
+            "Type": 8,
+            "Qualifiers": [],
+            "TypeLocalized": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "End Time"
+                }
+            ],
+            "HomePenaltyGoals": 0,
+            "AwayPenaltyGoals": 0,
+            "EventDescription": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "The referee brings the second period to an end."
+                }
+            ]
+        },
+        {
+            "EventId": "18185300001526",
+            "Timestamp": "2022-11-20T17:59:34.0Z",
+            "MatchMinute": "90'+6'",
+            "Period": 10,
+            "HomeGoals": 0,
+            "AwayGoals": 2,
+            "Type": 26,
+            "Qualifiers": [],
+            "TypeLocalized": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "Match end"
+                }
+            ],
+            "HomePenaltyGoals": 0,
+            "AwayPenaltyGoals": 0,
+            "EventDescription": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "The final whistle sounds."
+                }
+            ]
+        }
+    ],
+    "Properties": {},
+    "IsUpdateable": null
+}

@@ -1,0 +1,324 @@
+{
+    "ContinuationToken": null,
+    "ContinuationHash": null,
+    "Results": [
+        {
+            "IdMatch": "bn0ffkqrvppd3jahiflnzs1lg",
+            "IdStage": "9d5x17v8h81sp5r6q4hbx5hqs",
+            "IdGroup": null,
+            "IdSeason": "9cy0d6sf8dui1o0rpwynx3190",
+            "IdCompetition": "af79lqrc0ntom74zq13ccjslo",
+            "CompetitionName": [
+                {
+                    "Locale": "en-gb",
+                    "Description": "Challenger Pro League"
+                }
+            ],
+            "SeasonName": [
+                {
+                    "Locale": "en-gb",
+                    "Description": "Challenger Pro League 2022/2023"
+                }
+            ],
+            "SeasonShortName": [],
+            "Stadium": {
+                "IdStadium": null,
+                "Name": [
+                    {
+                        "Locale": "en-gb",
+                        "Description": "Lotto Park"
+                    }
+                ],
+                "Capacity": 28063,
+                "WebAddress": null,
+                "Built": "1917-01-01T00:00:00Z",
+                "Roof": false,
+                "Turf": null,
+                "IdCity": "400241509",
+                "CityName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Bruxelles (Brussel)"
+                    }
+                ],
+                "IdCountry": "BEL",
+                "PostalCode": null,
+                "Street": "Avenue Théo Verbeeck 2",
+                "Email": null,
+                "Fax": null,
+                "Phone": null,
+                "AffiliationCountry": null,
+                "AffiliationRegion": null,
+                "Latitude": 50.834182156,
+                "Longitude": 4.298352599,
+                "Length": null,
+                "Width": null,
+                "Properties": {},
+                "IsUpdateable": null
+            },
+            "ResultType": 1,
+            "MatchDay": "15",
+            "HomeTeamPenaltyScore": null,
+            "AwayTeamPenaltyScore": null,
+            "AggregateHomeTeamScore": null,
+            "AggregateAwayTeamScore": null,
+            "Weather": null,
+            "Attendance": null,
+            "Date": "2022-11-26T19:00:00Z",
+            "LocalDate": "2022-11-26T20:00:00Z",
+            "MatchTime": "66'",
+            "SecondHalfTime": null,
+            "FirstHalfTime": null,
+            "FirstHalfExtraTime": 0,
+            "SecondHalfExtraTime": 0,
+            "Winner": null,
+            "Period": 5,
+            "HomeTeam": {
+                "Score": 1,
+                "Side": null,
+                "IdTeam": "d011rbp4etj5styzfmpd7wa38",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/teams-{format}-{size}/d011rbp4etj5styzfmpd7wa38",
+                "IdCountry": "BEL",
+                "TeamType": 0,
+                "AgeType": 7,
+                "Tactics": "5-3-2",
+                "TeamName": [
+                    {
+                        "Locale": "en-gb",
+                        "Description": "RSC Anderlecht II"
+                    }
+                ],
+                "Abbreviation": "ANF",
+                "Coaches": [
+                    {
+                        "IdCoach": "4dvbxh16w3txv1jy5e2mat638",
+                        "IdCountry": "NED",
+                        "PictureUrl": null,
+                        "Name": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Robin Veldeman"
+                            }
+                        ],
+                        "Alias": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "R. Veldman"
+                            }
+                        ],
+                        "Role": 0,
+                        "SpecialStatus": null
+                    }
+                ],
+                "Players": [
+                    {
+                        "IdPlayer": "c716rboejsazxhoosf6l0v6dw",
+                        "IdTeam": "d011rbp4etj5styzfmpd7wa38",
+                        "ShirtNumber": 63,
+                        "Status": 1,
+                        "SpecialStatus": null,
+                        "Captain": false,
+                        "PlayerName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Timon Vanhoutte"
+                            }
+                        ],
+                        "ShortName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "T. Vanhoutte"
+                            }
+                        ],
+                        "Position": 0,
+                        "PlayerPicture": null,
+                        "FieldStatus": 1,
+                        "LineupX": null,
+                        "LineupY": null
+                    }
+                ],
+                "Bookings": [],
+                "Goals": [
+                    {
+                        "Type": 2,
+                        "IdPlayer": "rao8xq2rg3beoc418zv1gzro",
+                        "Minute": "11:35",
+                        "IdAssistPlayer": "358110",
+                        "Period": 3,
+                        "IdGoal": null,
+                        "IdTeam": "d011rbp4etj5styzfmpd7wa38"
+                    }
+                ],
+                "Substitutions": [
+                    {
+                        "IdEvent": null,
+                        "Period": 5,
+                        "Reason": 2,
+                        "SubstitutePosition": 3,
+                        "IdPlayerOff": "71euf80lf18fu40b9lika9ysq",
+                        "IdPlayerOn": "dzl3nhd1wmcttn6qkm0sqb7ro",
+                        "PlayerOffName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Nils De Wilde"
+                            }
+                        ],
+                        "PlayerOnName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Simion Michez"
+                            }
+                        ],
+                        "Minute": "64:52",
+                        "IdTeam": "d011rbp4etj5styzfmpd7wa38"
+                    }
+                ],
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "BEL",
+                "ShortClubName": "Anderlecht II"
+            },
+            "AwayTeam": {
+                "Score": 2,
+                "Side": null,
+                "IdTeam": "2000019799",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/teams-{format}-{size}/2000019799",
+                "IdCountry": "BEL",
+                "TeamType": 0,
+                "AgeType": 7,
+                "Tactics": "3-4-3",
+                "TeamName": [
+                    {
+                        "Locale": "en-gb",
+                        "Description": "Beerschot"
+                    }
+                ],
+                "Abbreviation": "BEE",
+                "Coaches": [
+                    {
+                        "IdCoach": "co3yqoz2wqu4bx8jh2t8gjrl6",
+                        "IdCountry": "AUT",
+                        "PictureUrl": null,
+                        "Name": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Andreas Wieland"
+                            }
+                        ],
+                        "Alias": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "A. Wieland"
+                            }
+                        ],
+                        "Role": 0,
+                        "SpecialStatus": null
+                    }
+                ],
+                "Players": [
+                    {
+                        "IdPlayer": "8r3r6z1khjq55pweqzfqezpm2",
+                        "IdTeam": "2000019799",
+                        "ShirtNumber": 1,
+                        "Status": 1,
+                        "SpecialStatus": null,
+                        "Captain": true,
+                        "PlayerName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "Bill Lathouwers"
+                            }
+                        ],
+                        "ShortName": [
+                            {
+                                "Locale": "en-gb",
+                                "Description": "B. Lathouwers"
+                            }
+                        ],
+                        "Position": 0,
+                        "PlayerPicture": null,
+                        "FieldStatus": 1,
+                        "LineupX": null,
+                        "LineupY": null
+                    }
+                ],
+                "Bookings": [
+                    {
+                        "Card": 1,
+                        "Period": 3,
+                        "IdEvent": null,
+                        "EventNumber": null,
+                        "IdPlayer": "2ky2kn7gpjorkyg9zyg68pk6i",
+                        "IdCoach": null,
+                        "IdTeam": "2000019799",
+                        "Minute": "38:56",
+                        "Reason": "OffTheBallFoul"
+                    }
+                ],
+                "Goals": [
+                    {
+                        "Type": 2,
+                        "IdPlayer": "cfxzvlgvt9jj17qxq41t9sxcl",
+                        "Minute": "33:28",
+                        "IdAssistPlayer": "7q0v538ed6j5xy3wgykh56w2x",
+                        "Period": 3,
+                        "IdGoal": null,
+                        "IdTeam": "2000019799"
+                    }
+                ],
+                "Substitutions": [],
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "BEL",
+                "ShortClubName": "Beerschot"
+            },
+            "BallPossession": {
+                "Intervals": [],
+                "LastX": [],
+                "OverallHome": 54.2,
+                "OverallAway": 45.8
+            },
+            "TerritorialPossesion": null,
+            "TerritorialThirdPossesion": null,
+            "Officials": [
+                {
+                    "IdCountry": "BEL",
+                    "OfficialId": "4sabn8pw0tbyrrnwcch72o05x",
+                    "NameShort": [
+                        {
+                            "Locale": "en-gb",
+                            "Description": "Q. Pirard"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-gb",
+                            "Description": "Quentin Pirard"
+                        }
+                    ],
+                    "OfficialType": 1,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Referee"
+                        }
+                    ]
+                }
+            ],
+            "MatchStatus": 3,
+            "GroupName": [],
+            "StageName": [
+                {
+                    "Locale": "en-gb",
+                    "Description": "Regular Season"
+                }
+            ],
+            "OfficialityStatus": 0,
+            "TimeDefined": true,
+            "Properties": {
+                "IdStatsPerform": "bn0ffkqrvppd3jahiflnzs1lg"
+            },
+            "IsUpdateable": null
+        }
+    ]
+}

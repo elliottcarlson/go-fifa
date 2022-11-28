@@ -9,13 +9,13 @@ import (
 )
 
 var expectedTeam = fifa.TeamResponse{
-	Id:            "43921",
-	Confederation: "CONCACAF",
-	Type:          1,
-	AgeType:       7,
-	FootballType:  0,
-	Gender:        fifa.MaleGender,
-	Name: []fifa.DefaultDescriptionResponse{{
+	Id:              "43921",
+	ConfederationId: "CONCACAF",
+	Type:            1,
+	AgeType:         7,
+	FootballType:    0,
+	Gender:          fifa.MaleGender,
+	Name: []fifa.LocaleDescription{{
 		Locale:      "en-GB",
 		Description: "United States",
 	}},
@@ -27,7 +27,7 @@ var expectedTeam = fifa.TeamResponse{
 	Abbreviation:  "USA",
 	Street:        "US Soccer Federation, US Soccer House, 1801 S. Prairie Avenue",
 	PictureUrl:    "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/USA",
-	DisplayName: []fifa.DefaultDescriptionResponse{{
+	DisplayName: []fifa.LocaleDescription{{
 		Locale:      "en-GB",
 		Description: "USA",
 	}},

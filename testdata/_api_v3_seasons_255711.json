@@ -1,0 +1,69 @@
+{
+    "IdSeason": "255711",
+    "Name": [
+        {
+            "Locale": "en-GB",
+            "Description": "FIFA World Cup Qatar 2022™"
+        }
+    ],
+    "ShortName": [],
+    "Abbreviation": "FWC 2022",
+    "IdMemberAssociation": [
+        "QAT",
+        "GER",
+        "DEN",
+        "BRA",
+        "FRA",
+        "BEL",
+        "CRO",
+        "ESP",
+        "SRB",
+        "ENG",
+        "SUI",
+        "NED",
+        "ARG",
+        "IRN",
+        "KOR",
+        "JPN",
+        "KSA",
+        "ECU",
+        "URU",
+        "CAN",
+        "GHA",
+        "SEN",
+        "POR",
+        "POL",
+        "MAR",
+        "TUN",
+        "CMR",
+        "USA",
+        "MEX",
+        "AUS",
+        "CRC",
+        "WAL"
+    ],
+    "IdConfederation": [
+        "AFC",
+        "UEFA",
+        "CONMEBOL",
+        "CONCACAF",
+        "CAF"
+    ],
+    "IdCompetition": "17",
+    "StartDate": "2022-11-20T16:00:00Z",
+    "EndDate": "2022-12-18T00:00:00Z",
+    "PictureUrl": "https://api.fifa.com/api/v3/picture/tournaments-{format}-{size}/255711",
+    "MascotPictureUrl": "https://api.fifa.com/api/v3/picture/tournaments-mascot-{format}-{size}/255711",
+    "MatchBallPictureUrl": "https://api.fifa.com/api/v3/picture/tournaments-matchball-{format}-{size}/255711",
+    "HostTeams": [
+        {
+            "IdTeam": "43834"
+        }
+    ],
+    "SportType": 0,
+    "Properties": {
+        "IdIFES": "255711",
+        "Providers": "IMM"
+    },
+    "IsUpdateable": null
+}
