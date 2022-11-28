@@ -9,6 +9,7 @@ on:
       - cmd/**
       - LICENSE.txt
       - README.md
+      - .github/**
 
   workflow_dispatch:
 
