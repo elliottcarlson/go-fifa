@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	fifa "github.com/ImDevinC/go-fifa"
+	fifa "github.com/imdevinc/go-fifa"
 )
 
 type TestClient struct{}
