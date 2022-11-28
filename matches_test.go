@@ -73,7 +73,7 @@ var expLiveMatches = fifa.LiveMatch{
 				Locale:      "en-gb",
 				Description: "R. Veldman",
 			}},
-			Role: 0,
+			Role: fifa.ManagerRole,
 		}},
 		Players: []fifa.TeamPlayer{{
 			Id:          "c716rboejsazxhoosf6l0v6dw",
@@ -147,7 +147,7 @@ var expLiveMatches = fifa.LiveMatch{
 				Locale:      "en-gb",
 				Description: "A. Wieland",
 			}},
-			Role: 0,
+			Role: fifa.ManagerRole,
 		}},
 		Players: []fifa.TeamPlayer{{
 			Id:          "8r3r6z1khjq55pweqzfqezpm2",
@@ -212,7 +212,7 @@ var expLiveMatches = fifa.LiveMatch{
 		}},
 	}},
 	MatchStatus: 3,
-	GroupName:   []any{},
+	GroupName:   []fifa.LocaleDescription{},
 	StageName: []fifa.LocaleDescription{{
 		Locale:      "en-gb",
 		Description: "Regular Season",
@@ -361,7 +361,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Daniele Orsato",
 			}},
-			Type: 1,
+			Type: fifa.Referee,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Referee",
@@ -378,7 +378,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Ciro Carbone",
 			}},
-			Type: 2,
+			Type: fifa.AssistantReferee1,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Assistant Referee 1",
@@ -395,7 +395,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Alessandro Giallatini",
 			}},
-			Type: 3,
+			Type: fifa.AssistantReferee2,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Assistant Referee 2",
@@ -412,7 +412,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Istvan Kovacs",
 			}},
-			Type: 4,
+			Type: fifa.FourthOfficial,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Fourth official",
@@ -429,7 +429,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Massimiliano Irrati",
 			}},
-			Type: 5,
+			Type: fifa.VideoAssistantReferee,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Video Assistant Referee (VAR)",
@@ -446,7 +446,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Tomasz LISTKIEWICZ",
 			}},
-			Type: 7,
+			Type: fifa.OffsideVAR,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Offside VAR",
@@ -463,7 +463,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Paolo Valeri",
 			}},
-			Type: 8,
+			Type: fifa.AssistantVAR,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Assistant VAR",
@@ -480,7 +480,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Benoit MILLOT",
 			}},
-			Type: 9,
+			Type: fifa.SupportVAR,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Support VAR",
@@ -497,7 +497,7 @@ var expMatches = fifa.MatchData{
 				Locale:      "en-GB",
 				Description: "Mihai Ovidiu Artene",
 			}},
-			Type: 10,
+			Type: fifa.ReserveAssistantReferee,
 			TypeLocalized: []fifa.LocaleDescription{{
 				Locale:      "en-GB",
 				Description: "Reserve Assistant Referee",
