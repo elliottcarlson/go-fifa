@@ -7,17 +7,13 @@ Create a new client using the `NewClient()` function. You will need to pass in a
 ### Currently Supported
 The following endpoints are currently supported:
 
-> **Warning**
-> There may be issues with the new v3 API
-
 | API Endpoint                                                | Function               |
 | ----------------------------------------------------------- | ---------------------- |
 | `/competitions`                                             | `GetCompetitions()`    |
 | `/competitions/{competitionId}`                             | `GetCompetition()`     |
 | `/timelines/{competitionId}/{seasonId}/{stageId}/{matchId}` | `GetMatchEvents()`     |
 | `/live/football/now`                                        | `GetCurrentMatches()`  |
-| `/calendar/matches`                                         | `GetTodaysMatches()`   |
+| `/calendar/matches`                                         | `GetMatches()`         |
 | `/teams/{teamId}`                                           | `GetTeam()`            |
 | `/players/{playerId}`                                       | `GetPlayer()`          |
 | `/seasons/{seasonId}`                                       | `GetSeason()`          |
-| `/calendar/{competitionId}/{seasonId}/{stageId}`            | `GetSeasonStandings()` |
