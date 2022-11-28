@@ -3,8 +3,8 @@ package go_fifa_test
 import (
 	"testing"
 
-	fifa "github.com/ImDevinC/go-fifa"
 	"github.com/google/go-cmp/cmp"
+	fifa "github.com/imdevinc/go-fifa"
 	"github.com/stretchr/testify/assert"
 )
 
