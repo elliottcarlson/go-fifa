@@ -30,4 +30,4 @@ jobs:
           token: ${{ github.token }}
 
       - name: Publish go doc
-        run: GOPROXY=proxy.golang.org go list -m github.com/imdevinc/go-fifa
+        run: GOPROXY=proxy.golang.org go list -m github.com/imdevinc/go-fifa@${{ steps.semver.outputs.next }}
