@@ -1,0 +1,377 @@
+{
+    "ContinuationToken": "W3sidG9rZW4iOiIrUklEOn5XYWs3QVAtVnp4cU9NQUFBQUFBQUFBPT0jUlQ6MSNUUkM6MSNSVEQ6eEo1WGk5ZlRBSnRUKzRWL2tOYkJCVE14TXpNdU1qSXVNekZWTWpjN01URTdNVEZiQUE9PSNJU1Y6MiNJRU86NjU1NjcjUUNGOjgiLCJyYW5nZSI6eyJtaW4iOiIiLCJtYXgiOiIwNUMxREZGRkZGRkZGQyJ9fV0=",
+    "ContinuationHash": "4217469277",
+    "Results": [
+        {
+            "IdCompetition": "17",
+            "IdSeason": "255711",
+            "IdStage": "285063",
+            "IdGroup": "285065",
+            "Weather": {
+                "Humidity": "61",
+                "Temperature": "24",
+                "WindSpeed": "8",
+                "Type": 10,
+                "TypeLocalized": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Clear Night"
+                    }
+                ]
+            },
+            "Attendance": "67372",
+            "IdMatch": "400128082",
+            "MatchDay": null,
+            "StageName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "First stage"
+                }
+            ],
+            "GroupName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "Group A"
+                }
+            ],
+            "CompetitionName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "FIFA World Cup™"
+                }
+            ],
+            "SeasonName": [
+                {
+                    "Locale": "en-GB",
+                    "Description": "FIFA World Cup Qatar 2022™"
+                }
+            ],
+            "SeasonShortName": [],
+            "Date": "2022-11-20T16:00:00Z",
+            "LocalDate": "2022-11-20T19:00:00Z",
+            "Home": {
+                "Score": 0,
+                "Side": null,
+                "IdTeam": "43834",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/QAT",
+                "IdCountry": "QAT",
+                "Tactics": "5-3-2",
+                "TeamType": 1,
+                "AgeType": 7,
+                "TeamName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Qatar"
+                    }
+                ],
+                "Abbreviation": "QAT",
+                "ShortClubName": "Qatar",
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "QAT"
+            },
+            "Away": {
+                "Score": 2,
+                "Side": null,
+                "IdTeam": "43927",
+                "PictureUrl": "https://api.fifa.com/api/v3/picture/flags-{format}-{size}/ECU",
+                "IdCountry": "ECU",
+                "Tactics": "4-4-2",
+                "TeamType": 1,
+                "AgeType": 7,
+                "TeamName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Ecuador"
+                    }
+                ],
+                "Abbreviation": "ECU",
+                "ShortClubName": "Ecuador",
+                "FootballType": 0,
+                "Gender": 1,
+                "IdAssociation": "ECU"
+            },
+            "HomeTeamScore": 0,
+            "AwayTeamScore": 2,
+            "AggregateHomeTeamScore": null,
+            "AggregateAwayTeamScore": null,
+            "HomeTeamPenaltyScore": 0,
+            "AwayTeamPenaltyScore": 0,
+            "LastPeriodUpdate": null,
+            "Leg": null,
+            "IsHomeMatch": null,
+            "Stadium": {
+                "IdStadium": "400090319",
+                "Name": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Al Bayt Stadium"
+                    }
+                ],
+                "Capacity": null,
+                "WebAddress": null,
+                "Built": null,
+                "Roof": false,
+                "Turf": null,
+                "IdCity": "400030664",
+                "CityName": [
+                    {
+                        "Locale": "en-GB",
+                        "Description": "Al Khor"
+                    }
+                ],
+                "IdCountry": "QAT",
+                "PostalCode": null,
+                "Street": null,
+                "Email": null,
+                "Fax": null,
+                "Phone": null,
+                "AffiliationCountry": null,
+                "AffiliationRegion": null,
+                "Latitude": null,
+                "Longitude": null,
+                "Length": null,
+                "Width": null,
+                "Properties": {
+                    "IdIFES": "5047367"
+                },
+                "IsUpdateable": null
+            },
+            "IsTicketSalesAllowed": null,
+            "MatchTime": "0'",
+            "SecondHalfTime": null,
+            "FirstHalfTime": null,
+            "FirstHalfExtraTime": null,
+            "SecondHalfExtraTime": null,
+            "Winner": "43927",
+            "MatchReportUrl": null,
+            "PlaceHolderA": "A1",
+            "PlaceHolderB": "A2",
+            "BallPossession": {
+                "Intervals": [],
+                "LastX": [],
+                "OverallHome": 47.088547,
+                "OverallAway": 52.911457
+            },
+            "Officials": [
+                {
+                    "IdCountry": "ITA",
+                    "OfficialId": "315593",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Daniele ORSATO"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Daniele Orsato"
+                        }
+                    ],
+                    "OfficialType": 1,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Referee"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ITA",
+                    "OfficialId": "415967",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Ciro CARBONE"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Ciro Carbone"
+                        }
+                    ],
+                    "OfficialType": 2,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Assistant Referee 1"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ITA",
+                    "OfficialId": "360574",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Alessandro GIALLATINI"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Alessandro Giallatini"
+                        }
+                    ],
+                    "OfficialType": 3,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Assistant Referee 2"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ROU",
+                    "OfficialId": "314605",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Istvan KOVACS"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Istvan Kovacs"
+                        }
+                    ],
+                    "OfficialType": 4,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Fourth official"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ITA",
+                    "OfficialId": "399108",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Massimiliano IRRATI"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Massimiliano Irrati"
+                        }
+                    ],
+                    "OfficialType": 5,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Video Assistant Referee (VAR)"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "POL",
+                    "OfficialId": "327977",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Tomasz LISTKIEWICZ"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Tomasz LISTKIEWICZ"
+                        }
+                    ],
+                    "OfficialType": 7,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Offside VAR"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ITA",
+                    "OfficialId": "328434",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Paolo VALERI"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Paolo Valeri"
+                        }
+                    ],
+                    "OfficialType": 8,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Assistant VAR"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "FRA",
+                    "OfficialId": "373782",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Benoit MILLOT"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Benoit MILLOT"
+                        }
+                    ],
+                    "OfficialType": 9,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Support VAR"
+                        }
+                    ]
+                },
+                {
+                    "IdCountry": "ROU",
+                    "OfficialId": "361587",
+                    "NameShort": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Mihai ARTENE"
+                        }
+                    ],
+                    "Name": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Mihai Ovidiu Artene"
+                        }
+                    ],
+                    "OfficialType": 10,
+                    "TypeLocalized": [
+                        {
+                            "Locale": "en-GB",
+                            "Description": "Reserve Assistant Referee"
+                        }
+                    ]
+                }
+            ],
+            "MatchStatus": 0,
+            "ResultType": 1,
+            "MatchNumber": 1,
+            "TimeDefined": true,
+            "OfficialityStatus": 1,
+            "MatchLegInfo": null,
+            "Properties": {
+                "IdIFES": "128084"
+            },
+            "IsUpdateable": null
+        }
+    ]
+}

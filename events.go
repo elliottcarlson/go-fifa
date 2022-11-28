@@ -14,24 +14,24 @@ type GetMatchEventOptions struct {
 }
 
 // GetMatchEvents returns the events from a match
-func (c *Client) GetMatchEvents(options *GetMatchEventOptions) (*GetMatchEventsResponse, error) {
+func (c *Client) GetMatchEvents(options *GetMatchEventOptions) (TimelineResponse, error) {
 	if options.CompetitionId == "" {
-		return nil, errors.New("competitionId is required but not provIded")
+		return TimelineResponse{}, errors.New("competitionId is required but not provIded")
 	}
 	if options.SeasonId == "" {
-		return nil, errors.New("seasonId is required but not provIded")
+		return TimelineResponse{}, errors.New("seasonId is required but not provIded")
 	}
 	if options.StageId == "" {
-		return nil, errors.New("stageId is required but not provIded")
+		return TimelineResponse{}, errors.New("stageId is required but not provIded")
 	}
 	if options.MatchId == "" {
-		return nil, errors.New("matchId is required but not provIded")
+		return TimelineResponse{}, errors.New("matchId is required but not provIded")
 	}
 	url := fmt.Sprintf("/timelines/%s/%s/%s/%s", options.CompetitionId, options.SeasonId, options.StageId, options.MatchId)
-	var respData GetMatchEventsResponse
+	var respData TimelineResponse
 	_, err := c.get(url, &respData, nil)
 	if err != nil {
-		return nil, err
+		return TimelineResponse{}, err
 	}
-	return &respData, nil
+	return respData, nil
 }

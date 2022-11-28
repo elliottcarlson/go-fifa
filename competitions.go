@@ -11,8 +11,8 @@ type GetCompetitionsOptions struct {
 }
 
 // GetCompetitions returns the list of competitions
-func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
-	var respData GetCompetitionsResponse
+func (c *Client) GetCompetitions() ([]Competition, error) {
+	var respData CompetitionsResponse
 	url := "/competitions"
 	_, err := c.get(url, &respData, nil)
 	if err != nil {
@@ -22,11 +22,11 @@ func (c *Client) GetCompetitions() ([]CompetitionResponse, error) {
 }
 
 // GetCompetition returns the information about a competition
-func (c *Client) GetCompetition(options *GetCompetitionsOptions) (*CompetitionResponse, error) {
+func (c *Client) GetCompetition(options *GetCompetitionsOptions) (*Competition, error) {
 	if options.CompetitionId == "" {
 		return nil, errors.New("competitionId is required but was not provIded")
 	}
-	var respData CompetitionResponse
+	var respData Competition
 	url := fmt.Sprintf("/competitions/%s", options.CompetitionId)
 	_, err := c.get(url, &respData, nil)
 	if err != nil {

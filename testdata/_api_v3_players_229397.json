@@ -1,0 +1,37 @@
+{
+    "IdPlayer": "229397",
+    "Name": [
+        {
+            "Locale": "en-GB",
+            "Description": "Lionel MESSI"
+        }
+    ],
+    "Alias": [
+        {
+            "Locale": "en-GB",
+            "Description": "MESSI"
+        }
+    ],
+    "BirthDate": "1987-06-24T00:00:00Z",
+    "Weight": 72,
+    "Height": 170,
+    "BirthPlace": "Rosario",
+    "IdCountry": "ARG",
+    "InternationalCaps": 167,
+    "InternationalDebut": null,
+    "TopCompetitionDebut": null,
+    "PictureUrl": null,
+    "ThumbnailUrl": null,
+    "TwitterAccount": null,
+    "PreferredFoot": null,
+    "MediaContent": [],
+    "LocalizedTwitterAccounts": null,
+    "Goals": 93,
+    "PlayerPicture": null,
+    "Properties": {
+        "StatsPerformIfesId": "229397",
+        "IdStatsPerform": "c5ryhn04g9goikd0blmh83aol",
+        "IdIFES": "229397"
+    },
+    "IsUpdateable": null
+}

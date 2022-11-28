@@ -4,29 +4,56 @@ import (
 	"testing"
 
 	fifa "github.com/ImDevinC/go-fifa"
+	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/assert"
 )
 
+var expCompetitionsResp = []fifa.Competition{{
+	Id: "2000000000",
+	Name: []fifa.LocaleDescription{{
+		Locale:      "en-gb",
+		Description: "Premier League",
+	}},
+	ConfederationIds:     []string{"UEFA"},
+	MemberAssociationIds: []string{"ENG"},
+	OwnerId:              "UEFA",
+	Gender:               fifa.MaleGender,
+	FootballType:         0,
+	TeamType:             0,
+	Type:                 2,
+	AgeType:              7,
+	Properties: fifa.Properties{
+		IdStatsPerform: "2kwbbcootiqqgmrzs6o5inle5",
+	},
+	IsUpdateable: false,
+}}
+
 func TestGetCompetitions(t *testing.T) {
 	t.Parallel()
-	client := fifa.Client{}
+	client := fifa.Client{
+		Client: &TestClient{},
+	}
 	resp, err := client.GetCompetitions()
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {
 		t.FailNow()
 	}
-	if ok := assert.Greater(t, len(resp), 1, "expected more than 1 result, got: %d", len(resp)); !ok {
-		t.FailNow()
+	diff := cmp.Diff(resp, expCompetitionsResp)
+	if ok := assert.Equal(t, diff, "", diff); !ok {
+		t.Fail()
 	}
 }
 
 func TestGetCompetitionById(t *testing.T) {
 	t.Parallel()
-	client := fifa.Client{}
-	resp, err := client.GetCompetition(&fifa.GetCompetitionsOptions{CompetitionId: "17"})
+	client := fifa.Client{
+		Client: &TestClient{},
+	}
+	resp, err := client.GetCompetition(&fifa.GetCompetitionsOptions{CompetitionId: "2000000000"})
 	if ok := assert.Nil(t, err, "expected no error with GetCompetitions, got: %s", err); !ok {
 		t.FailNow()
 	}
-	if ok := assert.Equal(t, resp.Name[0].Description, "FIFA World Cup™", "expected `FIFA World Cup`, got %s", resp.Name[0].Description); !ok {
-		t.FailNow()
+	diff := cmp.Diff(resp, &expCompetitionsResp[0])
+	if ok := assert.Equal(t, diff, "", diff); !ok {
+		t.Fail()
 	}
 }

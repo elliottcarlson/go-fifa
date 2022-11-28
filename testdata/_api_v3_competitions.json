@@ -1,0 +1,31 @@
+{
+    "ContinuationToken": "50",
+    "ContinuationHash": "50",
+    "Results": [
+        {
+            "IdCompetition": "2000000000",
+            "Name": [
+                {
+                    "Locale": "en-gb",
+                    "Description": "Premier League"
+                }
+            ],
+            "IdConfederation": [
+                "UEFA"
+            ],
+            "IdMemberAssociation": [
+                "ENG"
+            ],
+            "IdOwner": "UEFA",
+            "Gender": 1,
+            "FootballType": 0,
+            "TeamType": 0,
+            "CompetitionType": 2,
+            "AgeType": 7,
+            "Properties": {
+                "IdStatsPerform": "2kwbbcootiqqgmrzs6o5inle5"
+            },
+            "IsUpdateable": null
+        }
+    ]
+}
