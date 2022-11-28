@@ -313,7 +313,7 @@ type TeamPlayer struct {
 	Name          []LocaleDescription `json:"PlayerName"`
 	ShortName     []LocaleDescription `json:"ShortName"`
 	Position      int                 `json:"Position"` // TODO: Enum
-	PlayerPicture string              `json:"PlayerPicture"`
+	PlayerPicture any                 `json:"PlayerPicture"`
 	FieldStatus   int                 `json:"FieldStatus"` // TODO: Enum
 	LineupX       any                 `json:"LineupX"`
 	LineupY       any                 `json:"LineupY"`
@@ -444,17 +444,26 @@ type TimelineResponse struct {
 
 // TimelineEvent represent the structure of a timeline event
 type TimelineEvent struct {
-	Id               string              `json:"EventId"`
-	TeamId           string              `json:"IdTeam"`
-	Timestamp        time.Time           `json:"Timestamp"`
-	MatchMinute      string              `json:"MatchMinute"`
-	Period           Period              `json:"Period"`
-	HomeGoals        int                 `json:"HomeGoals"`
-	AwayGoals        int                 `json:"AwayGoals"`
-	Type             MatchEvent          `json:"Type"`
-	Qualifiers       any                 `json:"Qualifiers"`
-	TypeLocalized    []LocaleDescription `json:"TypeLocalized"`
-	HomePenaltyGoals int                 `json:"HomePenaltyGoals"`
-	AwayPenaltyGoals int                 `json:"AwayPenaltyGoals"`
-	Description      []LocaleDescription `json:"EventDescription"`
+	Id                  string              `json:"EventId"`
+	TeamId              string              `json:"IdTeam"`
+	Timestamp           time.Time           `json:"Timestamp"`
+	MatchMinute         string              `json:"MatchMinute"`
+	Period              Period              `json:"Period"`
+	HomeGoals           int                 `json:"HomeGoals"`
+	AwayGoals           int                 `json:"AwayGoals"`
+	Type                MatchEvent          `json:"Type"`
+	Qualifiers          any                 `json:"Qualifiers"`
+	TypeLocalized       []LocaleDescription `json:"TypeLocalized"`
+	HomePenaltyGoals    int                 `json:"HomePenaltyGoals"`
+	AwayPenaltyGoals    int                 `json:"AwayPenaltyGoals"`
+	Description         []LocaleDescription `json:"EventDescription"`
+	VarNotificationData VARNotification     `json:"VarNotificationData"`
+}
+
+// VARNotification struct represents information about VAR
+type VARNotification struct {
+	Incident int `json:"Incident"`
+	Reason   int `json:"Reason"`
+	Status   int `json:"Status"`
+	Result   int `json:"Result"`
 }
