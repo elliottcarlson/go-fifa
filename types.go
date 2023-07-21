@@ -16,6 +16,7 @@ type Period int
 const (
 	NotStarted        Period = 0  // The first period hasn't started yet
 	FirstPeriod       Period = 3  // First period
+	HalfTime          Period = 4  // Half Time
 	SecondPeriod      Period = 5  // Second period
 	FirstExtraPeriod  Period = 7  // First extra period
 	SecondExtraPeriod Period = 9  // Second extra period
